@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import { connect } from 'react-redux';
 import {updateScreen} from '../actions';
@@ -32,7 +32,6 @@ const useStyles = makeStyles({
 });
 
 const DesktopScreen = ({
-    view,
     menu,
     mainCpp,
     mainCppVisible,
@@ -55,14 +54,12 @@ const DesktopScreen = ({
 };
 
 const mapStateToProps = ({
-    view,
     menu,
     mainCpp,
     mainCppVisible,
     cmdPrompt,
     cmdPromptVisible,
 }) => ({
-    view,
     menu,
     mainCpp,
     mainCppVisible,
