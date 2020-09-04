@@ -47,245 +47,243 @@ const CmdPrompt = ({
     const [dragging, setDragging] = useState(false);
     const [blink, setBlink] = useState(false);
 
-    const handleEnter = textInput => {
-        // const temp = textInput;
-
-        if (textInput.toLowerCase().substr(0, 4) === 'echo') {
-            updateCommandList(`C:\\src>${textInput}`);
-            updateCommandList(textInput.substr(4).trim());
-        }
-
-        switch(textInput.toLowerCase()) {
-            case 'help':
-                updateCommandList('C:\\src>help');
-                updateCommandList("C:\\src> ['LOGOFF', 'SHUTDOWN', 'RESTART', 'resume', 'about me', 'IE', 'main.cpp', 'cls', 'exit', 'minimize this', 'minimize main.cpp', 'minimize internet explorer', 'maximize internet explorer', 'close main.cpp', 'close internet explorer', 'echo', projectName, and more hidden commands :]");
-                break;
-            case 'about me':
-                // this.props.switchProject('about me');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'resume':
-                                console.log()
-
-                // this.props.switchProject('resume');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'ai message':
-                                console.log()
-
-                // this.props.switchProject('ai message');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'transcend life':
-                                console.log()
-
-                // this.props.switchProject('transcend life');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'user login database':
-                                console.log()
-
-                // this.props.switchProject('user login database');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'windows website blocker':
-            console.log()
-
-                // this.props.switchProject('windows website blocker');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'keylogger':
-                                console.log()
-
-                // this.props.switchProject('keylogger');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'yelp decision generator':
-            console.log()
-
-                // this.props.switchProject('yelp decision generator');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'rob the mafia':
-                                console.log()
-
-                // this.props.switchProject('rob the mafia');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'quakeup':
-                                console.log()
-
-                // this.props.switchProject('quakeup');
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;                
-            // case 'ie':
-                                console.log()
-
-            case 'internet explorer':
-                // this.props.openWindow('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'main':
-                                console.log()
-
-            case 'main.cpp':
-                // this.props.openWindow('main.cpp');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'cls':
-                                console.log()
-
-                // this.setState(() => ({commands: []}));
-                break;
-            case 'logoff':
-            case 'log off':
-                // this.props.changeScreens('LoginScreen');
-                break;
-            case 'shutdown':
-            case 'shut down':
-                // this.props.changeScreens('BlackScreen');
-                break;
-            case 'quit':
-            case 'exit':
-                // this.props.close('Command Prompt');
-                break;
-            case 'min':
-            case 'min this':
-            case 'minimize':
-            case 'minimize this':
-                // this.props.toggle('Command Prompt');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'min main':
-                                console.log()
-
-            case 'min main.cpp':
-            case 'minimize main':
-            case 'minimize main.cpp':
-                // this.props.toggle('main.cpp');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'min ie':
-                                console.log()
-
-            case 'min internet explorer':
-            case 'minimize ie':
-            case 'minimize internet explorer':
-                // this.props.toggle('IE');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'max ie':
-                                console.log()
-
-            case 'max internet explorer':
-            case 'maximize ie':
-            case 'maximize internet explorer':
-                // this.props.maximize();
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'close main':
-                                console.log()
-                                break;
-
-            case 'close main.cpp':
-                // this.props.close('main.cpp');
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'close ie':
-                                console.log()
-                                break;
-
-            case 'close internet explorer':
-                // this.props.close('IE')
-            //     this.setState(prev => {
-            //         const cmds = prev.commands;
-            //         cmds.push(`C:\\src>${temp}`);
-            //     })
-            //     break;
-            // case 'echo':
-                                console.log()
-
-                break
-            default:
-                // this.setState(prev => {
-                //     const cmds = prev.commands;
-
-                //     cmds.push(`C:\\src>${textInput}`)
-                //     cmds.push(`'${textInput}' is not recognized as an internal or external command, operable program or batch file. Try 'help' for a list of commands.`)},
-                // () => {this.cmdPromptDi
-// splay.current.scrollTop = this.cmdPromptDisplay.current.scrollHeight})
-console.log()
-
-                break;
-        }
-    };
-
     useEffect(() => {
         const timer = setInterval(() => setBlink(prev => !prev), 800);
         const cmdInput = document.getElementById('cmdInput');
 
-        
+        const handleEnter = textInput => {
+            // const temp = textInput;
+
+            if (textInput.toLowerCase().substr(0, 4) === 'echo') {
+                updateCommandList(`C:\\src>${textInput}`);
+                updateCommandList(textInput.substr(4).trim());
+            }
+
+            switch(textInput.toLowerCase()) {
+                case 'help':
+                    updateCommandList('C:\\src>help');
+                    updateCommandList("C:\\src> ['LOGOFF', 'SHUTDOWN', 'RESTART', 'resume', 'about me', 'IE', 'main.cpp', 'cls', 'exit', 'minimize this', 'minimize main.cpp', 'minimize internet explorer', 'maximize internet explorer', 'close main.cpp', 'close internet explorer', 'echo', projectName, and more hidden commands :]");
+                    break;
+                case 'about me':
+                    // this.props.switchProject('about me');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'resume':
+                                    console.log()
+
+                    // this.props.switchProject('resume');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'ai message':
+                                    console.log()
+
+                    // this.props.switchProject('ai message');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'transcend life':
+                                    console.log()
+
+                    // this.props.switchProject('transcend life');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'user login database':
+                                    console.log()
+
+                    // this.props.switchProject('user login database');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'windows website blocker':
+                console.log()
+
+                    // this.props.switchProject('windows website blocker');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'keylogger':
+                                    console.log()
+
+                    // this.props.switchProject('keylogger');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'yelp decision generator':
+                console.log()
+
+                    // this.props.switchProject('yelp decision generator');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'rob the mafia':
+                                    console.log()
+
+                    // this.props.switchProject('rob the mafia');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'quakeup':
+                                    console.log()
+
+                    // this.props.switchProject('quakeup');
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;                
+                // case 'ie':
+                                    console.log()
+
+                case 'internet explorer':
+                    // this.props.openWindow('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'main':
+                                    console.log()
+
+                case 'main.cpp':
+                    // this.props.openWindow('main.cpp');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'cls':
+                                    console.log()
+
+                    // this.setState(() => ({commands: []}));
+                    break;
+                case 'logoff':
+                case 'log off':
+                    // this.props.changeScreens('LoginScreen');
+                    break;
+                case 'shutdown':
+                case 'shut down':
+                    // this.props.changeScreens('BlackScreen');
+                    break;
+                case 'quit':
+                case 'exit':
+                    // this.props.close('Command Prompt');
+                    break;
+                case 'min':
+                case 'min this':
+                case 'minimize':
+                case 'minimize this':
+                    // this.props.toggle('Command Prompt');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'min main':
+                                    console.log()
+
+                case 'min main.cpp':
+                case 'minimize main':
+                case 'minimize main.cpp':
+                    // this.props.toggle('main.cpp');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'min ie':
+                                    console.log()
+
+                case 'min internet explorer':
+                case 'minimize ie':
+                case 'minimize internet explorer':
+                    // this.props.toggle('IE');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'max ie':
+                                    console.log()
+
+                case 'max internet explorer':
+                case 'maximize ie':
+                case 'maximize internet explorer':
+                    // this.props.maximize();
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'close main':
+                                    console.log()
+                                    break;
+
+                case 'close main.cpp':
+                    // this.props.close('main.cpp');
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'close ie':
+                                    console.log()
+                                    break;
+
+                case 'close internet explorer':
+                    // this.props.close('IE')
+                //     this.setState(prev => {
+                //         const cmds = prev.commands;
+                //         cmds.push(`C:\\src>${temp}`);
+                //     })
+                //     break;
+                // case 'echo':
+                                    console.log()
+
+                    break
+                default:
+                    // this.setState(prev => {
+                    //     const cmds = prev.commands;
+    
+                    //     cmds.push(`C:\\src>${textInput}`)
+                    //     cmds.push(`'${textInput}' is not recognized as an internal or external command, operable program or batch file. Try 'help' for a list of commands.`)},
+                    // () => {this.cmdPromptDi
+// splay.current.scrollTop = this.cmdPromptDisplay.current.scrollHeight})
+console.log()
+
+                    break;
+            }
+        };
 
         // only if command prompt is visible
         const handleInput = e => {
