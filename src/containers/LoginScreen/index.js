@@ -5,8 +5,8 @@ import {
     Slide,
     Fade
 } from '@material-ui/core';
-import {updateScreen} from '../actions';
-import powerButton from '../picSrc/powerbutton.jpg';
+import {updateScreen} from '../../actions';
+import powerButton from '../../picSrc/powerbutton.jpg';
 
 const useStyles = makeStyles({
     root: {

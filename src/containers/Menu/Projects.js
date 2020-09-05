@@ -28,7 +28,6 @@ const useStyles = makeStyles({
     projectsText: {
         color: 'black',
         fontSize: 16,
-        fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
     },
     projectsButton: {
         borderStyle: 'solid',

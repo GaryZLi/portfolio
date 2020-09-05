@@ -44,7 +44,7 @@ const ListWrapper = ({
                         {icon}
                     </div>
                 )}
-                <div className={classes.text} style={{fontSize: window.innerW >= 400? 16: 13}}>
+                <div className={classes.text} style={{fontSize: window.innerWidth >= 400? 16: 13}}>
                     {text}
                 </div>
             </div>

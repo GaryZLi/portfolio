@@ -1,13 +1,13 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import { connect } from 'react-redux';
-import {updateScreen} from '../actions';
-import grassland from '../picSrc/grassland.png';
-import MainCpp from './MainCpp';
-import CmdPrompt from './CmdPrompt';
-import IE from './IE.js';
-import Taskbar from './Taskbar';
-import Menu from './Menu';
+import {updateScreen} from '../../actions';
+import grassland from '../../picSrc/grassland.png';
+import MainCpp from '../MainCpp';
+import CmdPrompt from '../CmdPrompt';
+import IE from '../IE.js/index.js';
+import Taskbar from '../Taskbar';
+import Menu from '../Menu';
 
 const useStyles = makeStyles({
     root: {
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
-        fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
         overflow: 'hidden',
     },
     container: {
@@ -32,11 +31,12 @@ const useStyles = makeStyles({
 });
 
 const DesktopScreen = ({
-    menu,
     mainCpp,
     mainCppVisible,
     cmdPrompt,
     cmdPromptVisible,
+    ie,
+    ieVisible,
 }) => {
     const classes = useStyles();
 
@@ -45,8 +45,8 @@ const DesktopScreen = ({
             <div className={classes.root}>
                 {mainCpp && mainCppVisible && <MainCpp/>}
                 {cmdPrompt && cmdPromptVisible && <CmdPrompt/>}
-                {menu && <Menu/>}
-                <IE/>
+                {ie && ieVisible && <IE/>}
+                <Menu/>
             </div>
             <Taskbar/>
         </div>
@@ -54,13 +54,15 @@ const DesktopScreen = ({
 };
 
 const mapStateToProps = ({
-    menu,
+    ie,
+    ieVisible,
     mainCpp,
     mainCppVisible,
     cmdPrompt,
     cmdPromptVisible,
 }) => ({
-    menu,
+    ie,
+    ieVisible,
     mainCpp,
     mainCppVisible,
     cmdPrompt,

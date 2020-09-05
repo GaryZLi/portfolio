@@ -11,23 +11,23 @@ const useStyles = makeStyles({
         marginLeft: 5,
         borderRadius: 5,
         backgroundColor: '#22aae0',
-        fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
         '&:hover': {
             backgroundColor: '#50c5f3',
+            cursor: 'pointer',
         }
     },
     icon: {
         height: 30,
         marginLeft: 10,
     },
-    text: {
+    name: {
         marginLeft: 5,   
     }
 });
 
 const TaskbarWindow = ({
     icon,
-    text,
+    name,
 }) => {
     const classes = useStyles();
 
@@ -41,8 +41,8 @@ const TaskbarWindow = ({
                     {icon}
                 </div>
             )}
-            <div className={classes.text}>
-                {text}
+            <div className={classes.name}>
+                {name}
             </div>
         </div>
     );

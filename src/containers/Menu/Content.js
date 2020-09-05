@@ -15,10 +15,14 @@ import facebook from '../../picSrc/facebook.png';
 import instagram from '../../picSrc/instagram.png';
 import gmail from '../../picSrc/gmail.png';
 import {
+    updateIE,
+    updateIEVisibility,
     updateMainCpp,
     updateMainCppVisibility,
     updateCmdPrompt,
     updateCmdPromptVisibility,
+    updateView,
+    addTaskbarWindow,
 } from '../../actions';
 
 const useStyles = makeStyles({
@@ -27,6 +31,7 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
+        fontSize: 40,
     },
     programs: {
         height: '100%',
@@ -43,7 +48,6 @@ const useStyles = makeStyles({
     programStyles: {
         height: 50,
         fontSize: 15,
-        fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
         '&:hover': {
             backgroundColor: '#379bf8',
             cursor: 'pointer',
@@ -52,7 +56,6 @@ const useStyles = makeStyles({
     socialStyles: {
         height: 60,
         fontSize: 16,
-        fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
         '&:hover': {
             backgroundColor: '#528EFD',
             cursor: 'pointer',
@@ -62,27 +65,40 @@ const useStyles = makeStyles({
 
 const Content = ({
     projectsList,
+    updateIE,
+    updateIEVisibility,
     updateMainCpp,
     updateMainCppVisibility,
     updateCmdPrompt,
     updateCmdPromptVisibility,
+    updateView,
+    addTaskbarWindow,
 }) => {
     const classes = useStyles();
+
+    const handleIE = () => {
+        updateIE(true);
+        updateIEVisibility(true);
+        updateView('Internet Explorer');
+    };
 
     const handleMainCpp = () => {
         updateMainCpp(true);
         updateMainCppVisibility(true);
+        updateView('main.cpp');
     };
 
     const handleCmdPrompt = () => {
         updateCmdPrompt(true);
         updateCmdPromptVisibility(true);
+        updateView('Command Prompt');
+        addTaskbarWindow('CmdPrompt', 'Command Prompt');
     };
 
     return (
         <div className={classes.content}>
             <div className={classes.programs}>
-                <ListWrapper className={classes.programStyles} icon={IE} text='Internet Explorer' handleClick={() => console.log('clicked ie')}/>
+                <ListWrapper className={classes.programStyles} icon={IE} text='Internet Explorer' handleClick={handleIE}/>
                 <ListWrapper className={classes.programStyles} icon={<MainCppIcon height={40} width={40}/>} text='main.cpp' handleClick={handleMainCpp}/>
                 <ListWrapper className={classes.programStyles} icon={<CmdPromptIcon height={40} width={40}/>} text='Command Prompt' handleClick={handleCmdPrompt}/>
                 <ListWrapper className={classes.programStyles} icon={resume} text='Resume' handleClick={() => console.log('clicked resunme')}/>
@@ -104,10 +120,14 @@ const Content = ({
 const mapStatetoProps = ({projectsList}) => ({projectsList});
 
 const mapDispatchToProps = {
+    updateIE,
+    updateIEVisibility,
     updateMainCpp,
     updateMainCppVisibility,
     updateCmdPrompt,
     updateCmdPromptVisibility,
+    updateView,
+    addTaskbarWindow,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Content);

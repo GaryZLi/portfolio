@@ -20,12 +20,22 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         marginRight: 10,
+    },
+    draggable: {
+        '&:hover': {
+            cursor: 'grab',
+        },
+        '&:active': {
+            cursor: 'grabbing',
+        },
     }
 })
 
 const WindowTop = ({
     text,
     color,
+    max,
+    draggable,
     handleMin,
     handleMax,
     handleClose,
@@ -33,13 +43,13 @@ const WindowTop = ({
 
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <div className={draggable? [classes.root, classes.draggable].join(' ') : classes.root}>
             <div className={classes.text} style={{color}}>
                 {text}
             </div>
             <div className={classes.buttonContainer}>
                 <MinimizeButton height='90%' width={50} color={color} onClick={handleMin}/>
-                {/* <MaximizeButton height='90%' width={50} color={color} onClick={handleMax}/> */}
+                {max && <MaximizeButton height='90%' width={50} color={color} onClick={handleMax}/>}
                 <CloseButton height='90%' width={50} color={color} onClick={handleClose}/>
             </div>
         </div>

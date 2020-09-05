@@ -5,6 +5,11 @@ export const updateScreen = screen => ({
     screen
 });
 
+export const updateView = view => ({
+    type: types.UPDATE_VIEW,
+    view,
+});
+
 export const updateMenu = () => ({
     type: types.UPDATE_MENU,
 });
@@ -17,6 +22,16 @@ export const updateProjectsList = on => ({
 export const updateCommandList = cmd => ({
     type: types.UPDATE_COMMAND_LIST,
     cmd,
+});
+
+export const updateIE = on => ({
+    type: types.UPDATE_IE,
+    on,
+});
+
+export const updateIEVisibility = visible => ({
+    type: types.UPDATE_IE_VISIBILITY,
+    visible,
 });
 
 export const updateMainCpp = on => ({
@@ -37,4 +52,10 @@ export const updateCmdPrompt = on => ({
 export const updateCmdPromptVisibility = visible => ({
     type: types.UPDATE_CMD_PROMPT_VISIBILITY,
     visible,
+});
+
+export const addTaskbarWindow = (icon, name) => ({
+    type: types.ADD_TASKBAR_WINDOW,
+    icon,
+    name,
 });

@@ -11,6 +11,7 @@ const useStyles = makeStyles({
 	root: {
 		height: '100%',
 		width: '100%',
+		fontFamily: 'Tahoma, Geneva, Verdana, sans-serif',
 	}
 });
 

@@ -1,19 +1,22 @@
 import * as types from './action-types';
-import ie from './picSrc/IE.png';
 
 export const initialState = {
     screen: 'desktopScreen',
     view: 'startupScreen',
     menu: false,
     projectsList: false,
-    mainCppVisible: false,
     mainCpp: false,
-    cmdPromptVisible: false,
-    cmdPrompt: false,
+    mainCppVisible: false,
+    mainCppMaximized: false,
+    cmdPrompt: true,
+    cmdPromptVisible: true,
+    cmdPromptMaximized: false,
+    ie: false,
+    ieVisible: false,
     taskbarWindows: [
         {
-            icon: ie,
-            text: 'Internet Explorer',
+            icon: 'ie',
+            name: 'Internet Explorer',
         },
     ],
     cmdList: [],
@@ -25,6 +28,12 @@ const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 screen: action.screen,
+            };
+
+        case types.UPDATE_VIEW:
+            return {
+                ...state,
+                view: action.view,
             };
 
         case types.UPDATE_MENU:
@@ -48,6 +57,18 @@ const mainReducer = (state = initialState, action) => {
                 ]
             };
 
+        case types.UPDATE_IE:
+            return {
+                ...state,
+                ie: action.on,
+            }
+
+        case types.UPDATE_IE_VISIBILITY:
+            return {
+                ...state,
+                ieVisible: action.visible,
+            }
+
         case types.UPDATE_MAIN_CPP:
             return {
                 ...state,
@@ -67,11 +88,22 @@ const mainReducer = (state = initialState, action) => {
             };
 
         case types.UPDATE_CMD_PROMPT_VISIBILITY:
-            console.log(action.visible)
             return {
                 ...state,
                 cmdPromptVisible: action.visible,
             };
+
+        case types.ADD_TASKBAR_WINDOW:
+            return {
+                ...state,
+                taskbarWindows: [
+                    ...state.taskbarWindows,
+                    {
+                        icon: action.icon,
+                        name: action.name,
+                    },
+                ],
+            }
 
         default:
             return state;

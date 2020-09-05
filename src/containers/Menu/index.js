@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/styles';
 import Profile from './Profile';
 import Content from './Content';
 import SystemButtonsContainer from './SystemButtonsContainer';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -14,14 +15,17 @@ const useStyles = makeStyles({
         backgroundColor: '#1c7eff',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
+        zIndex: 100,
     },
 });
 
-const Menu = () => {
+const Menu = ({menu}) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root}
+            style={{visibility: menu? 'visible' : 'hidden'}}
+        >
             <Profile/>
             <Content/>
             <SystemButtonsContainer/>
@@ -29,4 +33,6 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+const mapStateToProps = ({menu}) => ({menu});
+
+export default connect(mapStateToProps)(Menu);

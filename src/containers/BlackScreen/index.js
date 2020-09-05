@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
-import {updateScreen} from '../actions';
+import {updateScreen} from '../../actions';
 
 const useStyles = makeStyles({
     root: {

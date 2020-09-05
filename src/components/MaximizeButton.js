@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     maxButton: {
         height: '55%',
         width: '45%',
-        borderWidth: '1.5px',
+        borderWidth: '2px',
         borderStyle: 'solid',
     }
 });

@@ -1,7 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
-import WindowTop from '../components/WindowTop';
+import WindowTop from '../../components/WindowTop';
+import {
+    updateView,
+} from '../../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -31,18 +34,28 @@ const useStyles = makeStyles({
     }
 });
 
-const MainCpp = () => {
+const MainCpp = ({
+    view,
+    updateView,
+}) => {
     const classes = useStyles();
     const containerRef = useRef();
     const [position, setPosition] = useState([10, 11]);
     const [dragging, setDragging] = useState(false);
 
-    const handleMove = e => {
-        if (dragging) {
-            e.persist();
-            setPosition([e.clientX - dragging[0], e.clientY - dragging[1]]);
-        }
-    };
+    useEffect(() => {
+        const handleMove = e => {
+            if (dragging) {
+                setPosition([e.clientX - dragging[0], e.clientY - dragging[1]]);
+            }
+        };
+
+        document.addEventListener('mousemove', handleMove);
+
+        return () => document.removeEventListener('mousemove', handleMove);
+    }, [dragging]);
+    
+    
 
     const handleTouch = e => {
         if (dragging) {
@@ -53,22 +66,26 @@ const MainCpp = () => {
     return (
         <div className={classes.root}
             ref={containerRef}
+            onMouseDown={() => updateView('main.cpp')}
             style={{
                 left: position[0],
                 top: position[1],
+                zIndex: view === 'main.cpp'? 10 : 5,
             }}
         >
             <div className={classes.topContainer}
-                style={{cursor: dragging? 'grabbing' : 'default'}}
                 onMouseDown={e => setDragging([e.clientX - containerRef.current.offsetLeft, e.clientY - containerRef.current.offsetTop])}
                 onMouseUp={() => setDragging(false)}
-                onMouseLeave={() => setDragging(false)}
-                onMouseMove={handleMove}
                 onTouchStart={e => setDragging([e.touches[0].clientX - containerRef.current.getBoundingClientRect().x, e.touches[0].clientY - containerRef.current.getBoundingClientRect().y])}
                 onTouchEnd={() => setDragging(false)}
                 onTouchMove={handleTouch}
             >
-                <WindowTop text='main.cpp' color='white'/>
+                <WindowTop
+                    text='main.cpp'
+                    color='white'
+                    draggable
+                    max
+                />
             </div>
             <div className={classes.contentContainer}>
                 <div className={classes.content} style={{fontSize: window.innerWidth <= 520? window.innerWidth / 50 + 5 : 16}}>
@@ -104,12 +121,12 @@ const MainCpp = () => {
     );
 };
 
-const mapStateToProps = ({}) => ({
-
+const mapStateToProps = ({view}) => ({
+    view,
 });
 
 const mapDisptachToProps = {
-
+    updateView,
 };
 
 export default connect(mapStateToProps, mapDisptachToProps)(MainCpp);

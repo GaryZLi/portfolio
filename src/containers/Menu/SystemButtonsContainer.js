@@ -22,6 +22,12 @@ const useStyles = makeStyles({
         userSelect: 'none',
         '&:hover': {
             cursor: 'pointer',
+            '& $systemButtonText': {
+                textDecoration: 'underline',
+            },
+            '& $systemButton': {
+                boxShadow: '2px 2px 8px #50C5F3, -2px -2px 8px #50C5F3',
+            },
         }
     },
     systemButton: {
@@ -32,7 +38,7 @@ const useStyles = makeStyles({
     systemButtonText: {
         color: 'white',
         fontSize: 16,
-        marginLeft: 5
+        marginLeft: 5,
     }
 });
 
