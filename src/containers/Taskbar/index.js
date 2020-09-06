@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import { connect } from 'react-redux';
 import WindowsLogo from '../../components/WindowsLogo';
-import TaskbarWindows from '../TaskbarWindows';
+import TaskbarWindows from './TaskbarWindows';
 import {updateMenu} from '../../actions';
 
 const useStyles = makeStyles({

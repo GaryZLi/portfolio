@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import WindowTop from '../../components/WindowTop';
+import Toolbar from './Toolbar';
+import AboutMe from './Pages/AboutMe';
 import {
     updateView,
 } from '../../actions';
@@ -10,28 +12,56 @@ const useStyles = makeStyles({
     root: {
         height: '100%',
         width: '100%',
-        backgroundColor: '#0ebee0',
-        position: 'absolute',
-    }
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    content: {
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'white',
+        overflowY: 'auto',
+        paddingBottom: 100,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
 });
 
 const IE = ({
     view,
+    visible,
     updateView,
 }) => {
     const classes = useStyles();
-console.log(view === 'Internet Explorer')
+
     return (
         <div className={classes.root}
-            onMouseDown={() => updateView('Internet Explorer')}
-            style={{zIndex: view === 'Internet Explorer'? 10 : 5}}
+            onMouseDown={() => view === 'Internet Explorer' || updateView('Internet Explorer')}
+            style={{
+                zIndex: view === 'Internet Explorer'? 10 : 5,
+                visibility: visible? 'visible' : 'hidden',
+            }}
         >
-            <WindowTop text='Internet Explorer' color='black' />
+            <WindowTop name='Internet Explorer' color='black' />
+            <Toolbar/>
+            <div className={classes.content}>
+                <AboutMe/>
+            </div>
         </div>
     );
 };
 
-const mapStateToProps = ({view}) => ({view});
+const mapStateToProps = ({
+    view,
+    visibility,
+}) => {
+    const visible = visibility['Internet Explorer'];
+    
+    return {
+        view,
+        visible,
+    }
+};
 
 const mapDispatchToProps = {
     updateView,

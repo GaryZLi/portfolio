@@ -36,6 +36,7 @@ const useStyles = makeStyles({
 
 const MainCpp = ({
     view,
+    visible,
     updateView,
 }) => {
     const classes = useStyles();
@@ -55,8 +56,6 @@ const MainCpp = ({
         return () => document.removeEventListener('mousemove', handleMove);
     }, [dragging]);
     
-    
-
     const handleTouch = e => {
         if (dragging) {
             setPosition([e.touches[0].clientX - dragging[0], e.touches[0].clientY - dragging[1]]);
@@ -66,11 +65,12 @@ const MainCpp = ({
     return (
         <div className={classes.root}
             ref={containerRef}
-            onMouseDown={() => updateView('main.cpp')}
+            onMouseDown={() => view === 'main.cpp' || updateView('main.cpp')}
             style={{
                 left: position[0],
                 top: position[1],
                 zIndex: view === 'main.cpp'? 10 : 5,
+                visibility: visible? 'visible' : 'hidden',
             }}
         >
             <div className={classes.topContainer}
@@ -81,7 +81,7 @@ const MainCpp = ({
                 onTouchMove={handleTouch}
             >
                 <WindowTop
-                    text='main.cpp'
+                    name='main.cpp'
                     color='white'
                     draggable
                     max
@@ -121,9 +121,17 @@ const MainCpp = ({
     );
 };
 
-const mapStateToProps = ({view}) => ({
+const mapStateToProps = ({
     view,
-});
+    visibility,
+}) => {
+    const visible = visibility['main.cpp'];
+    
+    return {
+        view,
+        visible,
+    };
+};
 
 const mapDisptachToProps = {
     updateView,

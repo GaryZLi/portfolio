@@ -13,6 +13,12 @@ const useStyles = makeStyles({
     root: {
         height: '100%',
         width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    container: {
+        height: '100%',
+        width: '100%',
         position: 'relative',
         backgroundColor: 'rgb(44, 188, 255)',
         backgroundImage: `url(${grassland})`,
@@ -22,30 +28,19 @@ const useStyles = makeStyles({
         backgroundSize: 'cover',
         overflow: 'hidden',
     },
-    container: {
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    }
 });
 
 const DesktopScreen = ({
-    mainCpp,
-    mainCppVisible,
-    cmdPrompt,
-    cmdPromptVisible,
-    ie,
-    ieVisible,
+    windows,
 }) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
-            <div className={classes.root}>
-                {mainCpp && mainCppVisible && <MainCpp/>}
-                {cmdPrompt && cmdPromptVisible && <CmdPrompt/>}
-                {ie && ieVisible && <IE/>}
+        <div className={classes.root}>
+            <div className={classes.container}>
+                {windows['main.cpp'] && <MainCpp/>}
+                {windows['Command Prompt'] && <CmdPrompt/>}
+                {windows['Internet Explorer'] && <IE/>}
                 <Menu/>
             </div>
             <Taskbar/>
@@ -54,19 +49,9 @@ const DesktopScreen = ({
 };
 
 const mapStateToProps = ({
-    ie,
-    ieVisible,
-    mainCpp,
-    mainCppVisible,
-    cmdPrompt,
-    cmdPromptVisible,
+    windows,
 }) => ({
-    ie,
-    ieVisible,
-    mainCpp,
-    mainCppVisible,
-    cmdPrompt,
-    cmdPromptVisible
+    windows,
 });
 
 const mapDispatchToProps = {

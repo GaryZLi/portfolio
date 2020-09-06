@@ -4,10 +4,12 @@ import {makeStyles} from '@material-ui/styles';
 import TaskbarWindow from '../../components/TaskbarWindow';
 import ie from '../../picSrc/IE.png';
 import CmdPromptIcon from '../../components/CmdPromptIcon';
+import MainCppIcon from '../../components/MainCppIcon';
 
 const iconMap = {
-    'ie': ie,
-    'cmdPrompt': <CmdPromptIcon height={30} width={30}/>,
+    'Internet Explorer': ie,
+    'Command Prompt': <CmdPromptIcon height={30} width={30}/>,
+    'main.cpp': <MainCppIcon height={30} width={30}/>,
 }
 
 const useStyles = makeStyles({
@@ -19,7 +21,13 @@ const useStyles = makeStyles({
         flex: 1,
         paddingLeft: 10,
         paddingRight: 5,
-        overflow: 'hidden',
+        overflowX: 'scroll',
+        scrollbarWidth: 0,
+        '&::-webkit-scrollbar': {
+            width: 0,
+            height: 0,
+            background: 'transparent',
+        },
     }
 });
 
@@ -28,7 +36,7 @@ const Windows = ({taskbarWindows}) => {
 
     return (
         <div className={classes.root}>
-            {taskbarWindows.map(window => <TaskbarWindow key={window.text} icon={iconMap[window.icon]} name={window.name}/>)}
+            {taskbarWindows.map(name => <TaskbarWindow key={name} icon={iconMap[name]} name={name}/>)}
         </div>
     );
 };

@@ -1,5 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
+import {
+    updateVisibility,
+    updateView,
+} from '../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -28,11 +33,18 @@ const useStyles = makeStyles({
 const TaskbarWindow = ({
     icon,
     name,
+    updateVisibility,
+    updateView,
 }) => {
     const classes = useStyles();
 
+    const handleClick = () => {
+        updateVisibility(name, true);
+        updateView(name);
+    };
+
     return (
-        <div className={classes.root}>
+        <div className={classes.root} onClick={handleClick}>
             {typeof icon === 'string' && (
                 <img className={classes.icon} src={icon} alt='icon' draggable='false'/>
             )}
@@ -48,4 +60,9 @@ const TaskbarWindow = ({
     );
 };
 
-export default TaskbarWindow;
+const mapDispatchToProps = {
+    updateVisibility,
+    updateView,
+};
+
+export default connect(null, mapDispatchToProps)(TaskbarWindow);

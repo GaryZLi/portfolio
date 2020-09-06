@@ -1,5 +1,10 @@
 import * as types from './action-types';
 
+export const updateMobile = mobile => ({
+    type: types.UPDATE_MOBILE,
+    mobile,
+});
+
 export const updateScreen = screen => ({
     type: types.UPDATE_SCREEN,
     screen
@@ -24,38 +29,29 @@ export const updateCommandList = cmd => ({
     cmd,
 });
 
-export const updateIE = on => ({
-    type: types.UPDATE_IE,
-    on,
+export const updateWindow = (window, open) => ({
+    type: types.UPDATE_WINDOW,
+    window,
+    open,
 });
 
-export const updateIEVisibility = visible => ({
-    type: types.UPDATE_IE_VISIBILITY,
+export const updateVisibility = (window, visible) => ({
+    type: types.UPDATE_VISIBILITY,
+    window,
     visible,
 });
 
-export const updateMainCpp = on => ({
-    type: types.UPDATE_MAIN_CPP,
-    on,
+export const updateInput = input => ({
+    type: types.UPDATE_INPUT,
+    input,
 });
 
-export const updateMainCppVisibility = visible => ({
-    type: types.UPDATE_MAIN_CPP_VISIBILITY,
-    visible,
-});
-
-export const updateCmdPrompt = on => ({
-    type: types.UPDATE_CMD_PROMPT,
-    on,
-});
-
-export const updateCmdPromptVisibility = visible => ({
-    type: types.UPDATE_CMD_PROMPT_VISIBILITY,
-    visible,
-});
-
-export const addTaskbarWindow = (icon, name) => ({
+export const addTaskbarWindow = name => ({
     type: types.ADD_TASKBAR_WINDOW,
-    icon,
+    name,
+});
+
+export const removeTaskbarWindow = name => ({
+    type: types.REMOVE_TASKBAR_WINDOW,
     name,
 });

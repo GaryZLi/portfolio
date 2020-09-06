@@ -15,12 +15,8 @@ import facebook from '../../picSrc/facebook.png';
 import instagram from '../../picSrc/instagram.png';
 import gmail from '../../picSrc/gmail.png';
 import {
-    updateIE,
-    updateIEVisibility,
-    updateMainCpp,
-    updateMainCppVisibility,
-    updateCmdPrompt,
-    updateCmdPromptVisibility,
+    updateVisibility,
+    updateWindow,
     updateView,
     addTaskbarWindow,
 } from '../../actions';
@@ -65,42 +61,26 @@ const useStyles = makeStyles({
 
 const Content = ({
     projectsList,
-    updateIE,
-    updateIEVisibility,
-    updateMainCpp,
-    updateMainCppVisibility,
-    updateCmdPrompt,
-    updateCmdPromptVisibility,
+    updateWindow,
+    updateVisibility,
     updateView,
     addTaskbarWindow,
 }) => {
     const classes = useStyles();
 
-    const handleIE = () => {
-        updateIE(true);
-        updateIEVisibility(true);
-        updateView('Internet Explorer');
-    };
-
-    const handleMainCpp = () => {
-        updateMainCpp(true);
-        updateMainCppVisibility(true);
-        updateView('main.cpp');
-    };
-
-    const handleCmdPrompt = () => {
-        updateCmdPrompt(true);
-        updateCmdPromptVisibility(true);
-        updateView('Command Prompt');
-        addTaskbarWindow('CmdPrompt', 'Command Prompt');
+    const handleWindow = window => {
+        updateWindow(window, true);
+        updateVisibility(window, true);
+        updateView(window);
+        addTaskbarWindow(window);
     };
 
     return (
         <div className={classes.content}>
             <div className={classes.programs}>
-                <ListWrapper className={classes.programStyles} icon={IE} text='Internet Explorer' handleClick={handleIE}/>
-                <ListWrapper className={classes.programStyles} icon={<MainCppIcon height={40} width={40}/>} text='main.cpp' handleClick={handleMainCpp}/>
-                <ListWrapper className={classes.programStyles} icon={<CmdPromptIcon height={40} width={40}/>} text='Command Prompt' handleClick={handleCmdPrompt}/>
+                <ListWrapper className={classes.programStyles} icon={IE} text='Internet Explorer' handleClick={() => handleWindow('Internet Explorer')}/>
+                <ListWrapper className={classes.programStyles} icon={<MainCppIcon height={40} width={40}/>} text='main.cpp' handleClick={() => handleWindow('main.cpp')}/>
+                <ListWrapper className={classes.programStyles} icon={<CmdPromptIcon height={40} width={40}/>} text='Command Prompt' handleClick={() => handleWindow('Command Prompt')}/>
                 <ListWrapper className={classes.programStyles} icon={resume} text='Resume' handleClick={() => console.log('clicked resunme')}/>
                 <ListWrapper className={classes.programStyles} icon={help} text='Help' handleClick={() => console.log('clicked help')}/>
                 <Projects/>
@@ -120,12 +100,8 @@ const Content = ({
 const mapStatetoProps = ({projectsList}) => ({projectsList});
 
 const mapDispatchToProps = {
-    updateIE,
-    updateIEVisibility,
-    updateMainCpp,
-    updateMainCppVisibility,
-    updateCmdPrompt,
-    updateCmdPromptVisibility,
+    updateVisibility,
+    updateWindow,
     updateView,
     addTaskbarWindow,
 };
