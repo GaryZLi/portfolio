@@ -17,6 +17,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
+        backgroundColor: 'rgb(14, 190, 224)',
     },
     content: {
         height: '100%',
@@ -36,9 +37,10 @@ const IE = ({
     updateView,
 }) => {
     const classes = useStyles();
-
+console.log(view === 'Internet Explorer')
     return (
-        <div className={classes.root}
+        <div
+            className={classes.root}
             onMouseDown={() => view === 'Internet Explorer' || updateView('Internet Explorer')}
             style={{
                 zIndex: view === 'Internet Explorer'? 10 : 5,

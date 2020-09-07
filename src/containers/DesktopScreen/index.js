@@ -8,6 +8,7 @@ import CmdPrompt from '../CmdPrompt';
 import IE from '../IE/index.js';
 import Taskbar from '../Taskbar';
 import Menu from '../Menu';
+import Clouds from '../Clouds';
 
 const useStyles = makeStyles({
     root: {
@@ -37,6 +38,7 @@ const DesktopScreen = ({
 
     return (
         <div className={classes.root}>
+            <Clouds/>
             <div className={classes.container}>
                 {windows['main.cpp'] && <MainCpp/>}
                 {windows['Command Prompt'] && <CmdPrompt/>}

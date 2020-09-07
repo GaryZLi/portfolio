@@ -63,7 +63,8 @@ const MainCpp = ({
     };
 
     return (
-        <div className={classes.root}
+        <div
+            className={classes.root}
             ref={containerRef}
             onMouseDown={() => view === 'main.cpp' || updateView('main.cpp')}
             style={{
@@ -73,7 +74,8 @@ const MainCpp = ({
                 visibility: visible? 'visible' : 'hidden',
             }}
         >
-            <div className={classes.topContainer}
+            <div
+                className={classes.topContainer}
                 onMouseDown={e => setDragging([e.clientX - containerRef.current.offsetLeft, e.clientY - containerRef.current.offsetTop])}
                 onMouseUp={() => setDragging(false)}
                 onTouchStart={e => setDragging([e.touches[0].clientX - containerRef.current.getBoundingClientRect().x, e.touches[0].clientY - containerRef.current.getBoundingClientRect().y])}
@@ -88,7 +90,14 @@ const MainCpp = ({
                 />
             </div>
             <div className={classes.contentContainer}>
-                <div className={classes.content} style={{fontSize: window.innerWidth <= 520? window.innerWidth / 50 + 5 : 16}}>
+                <div
+                    className={classes.content}
+                    style={{
+                        fontSize: window.innerWidth <= 520
+                            ? window.innerWidth / 50 + 5
+                            : 16
+                    }}
+                >
                     <div style={{ height: '5px'}}/>
                     <span style={{color: 'grey'}}>#include&ensp;</span> <span style={{color: 'brown'}}>{"<iostream>"}</span> 
                     <div/>
