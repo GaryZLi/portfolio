@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
-import {Slide} from '@material-ui/core';
-import VisibilitySensor from 'react-visibility-sensor';
 import profilePic from '../../../picSrc/profile.jpg';
-import OaklandHigh from '../../../picSrc/oaklandHigh.jpg';
-import Laney from '../../../picSrc/laney.jpg';
-import UCI from '../../../picSrc/uci.png';
-import CoA from '../../../picSrc/CoA.png';
+import {
+    schools,
+    skills,
+} from '../../../data';
 
 const useStyles = makeStyles({
     root: {
@@ -15,6 +13,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif',
     },
     title: {
         width: '100%',
@@ -40,53 +39,49 @@ const useStyles = makeStyles({
     },
     schoolContainer: {
         minWidth: 300,
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
-        marginTop: 50,
-        marginBottom: 50,
+        paddingBottom: 20,
+    },
+    schoolInfo: {
+        width: '100%',
+        borderBottom:  '1px solid #e3e3e3',
+        paddingBottom: 20,
+        marginLeft: 30,
     },
     schoolImg: {
-        minHeight: 80,
-        minWidth: 80,
-        height: '100%',
-        width: '100%',
-        maxHeight: 150,
-        maxWidth: 150,
-        marginRight: 10,
+        height: 56,
+        width: 56,
     },
     schoolName: {
-        fontSize: 20,
-        fontWeight: 500,
-        marginBottom: 10,
-    }
+        fontSize: 16,
+        marginBottom: 5,
+        fontWeight: 600,
+    },
+    schoolDegree: {
+        fontSize: 14,
+    },
+    schoolYear: {
+        color: '#00000099',
+        fontSize: 14,
+    },
+    skillsContainer: {
+        width: '100%',
+        paddingBottom: 30,
+    },
+    skillProgressContainer: {
+        border: '2px solid #22aae0',
+        height: 20,
+        width: '100%',
+        borderRadius: 20,
+    },
+    skillProgress: {
+        height: '100%',
+        backgroundColor: '#22aae0',
+        borderRadius: 20,
+    },
 });
-
-const schoolMapping = [
-    {
-        name: 'University of California, Irvine',
-        icon: UCI,
-        degree: 'B.S. in Computer Science',
-        years: '2018 - 2020',
-    },
-    {
-        name: 'Laney College',
-        icon: Laney,
-        degree: 'A.S.T in Mathematics',
-        years: '2016 - 2018',
-    },
-    {
-        name: 'College of Alameda',
-        icon: CoA,
-        degree: 'A.S.T in Mathematics',
-        years: '2016 - 2018',
-    },
-    {
-        name: 'Oakland High School',
-        icon: OaklandHigh,
-        degree: 'High School Diploma',
-        years: '2012 - 2016',
-    }
-];
 
 const AboutMe = ({mobile}) => {
     const classes = useStyles();
@@ -128,10 +123,41 @@ const AboutMe = ({mobile}) => {
                 </div>
             </div>
             <div className={classes.title}>
+                Work Experience
+            </div>
+            <div>
+
+            </div>
+            <div className={classes.title}>
+                Skills
+            </div>
+            {
+                skills
+                    .sort((a, b) => -(a.level - b.level))
+                    .map(skill => {
+                        return (
+                            <div className={classes.skillsContainer}>
+                                <div>
+                                    {skill.name}
+                                </div>
+                                <div className={classes.skillProgressContainer}>
+                                    <div
+                                        className={classes.skillProgress}
+                                        style={{width: `${skill.level}%`}}
+                                    />
+                                </div>
+                                <div style={{marginLeft: `${skill.level}%`}}>
+                                    {`${skill.level}%`}
+                                </div>
+                            </div>
+                        );
+                    })
+            }
+            <div className={classes.title}>
                 Education
             </div>
             {
-                schoolMapping.map(school => {
+                schools.map(school => {
                     return (
                         <div    
                             key={school.name}
@@ -139,14 +165,14 @@ const AboutMe = ({mobile}) => {
                             style={{marginRight: 'auto'}}
                         >
                             <img className={classes.schoolImg} src={school.icon} alt={school.name}/>
-                            <div>
+                            <div className={classes.schoolInfo}>
                                 <div className={classes.schoolName}>
                                     {school.name}
                                 </div>
-                                <div>
+                                <div className={classes.schoolDegree}>
                                     {school.degree}
                                 </div>
-                                <div style={{fontStyle: 'italic'}}>
+                                <div className={classes.schoolYear}>
                                     {school.years}
                                 </div>
                             </div>

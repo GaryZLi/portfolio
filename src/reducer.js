@@ -2,7 +2,7 @@ import * as types from './action-types';
 
 export const initialState = {
     mobile: window.innerWidth < 900,
-    screen: 'startupScreen',
+    screen: 'desktopScreen',
     view: 'startupScreen',
     ieView: 0, 
     menu: false,
@@ -11,7 +11,7 @@ export const initialState = {
     visibility: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': false,
+        'Internet Explorer': true,
     },
     maximized: {
         'Command Prompt': false,
@@ -20,10 +20,10 @@ export const initialState = {
     windows: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': false,
+        'Internet Explorer': true,
     },
     taskbarWindows: [
-        // 'Internet Explorer',
+        'Internet Explorer',
     ],
     tabs: [
         'About Me',
