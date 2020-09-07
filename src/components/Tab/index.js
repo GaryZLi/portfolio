@@ -1,6 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import TabIcon from '../../picSrc/tabIcon.png';
+import {
+    updateTab,
+} from '../../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -26,15 +30,30 @@ const useStyles = makeStyles({
     }
 });
 
-const Tab = ({name}) => {
+const Tab = ({
+    name,
+    index,
+    updateTab,
+}) => {
     const classes = useStyles();
 
+    const handleClick = () => {
+        updateTab({
+            name,
+            index,
+        });
+    };
+
     return (
-        <div className={classes.root}>
+        <div className={classes.root} onClick={handleClick}>
             <img className={classes.icon} src={TabIcon} alt='tab icon'/>
             {name}
         </div>
     );
 };
 
-export default (Tab);
+const mapDispatchToProps = {
+    updateTab,
+};
+
+export default connect(null, mapDispatchToProps)(Tab);

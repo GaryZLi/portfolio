@@ -5,7 +5,7 @@ import {updateScreen} from '../../actions';
 import grassland from '../../picSrc/grassland.png';
 import MainCpp from '../MainCpp';
 import CmdPrompt from '../CmdPrompt';
-import IE from '../IE.js/index.js';
+import IE from '../IE/index.js';
 import Taskbar from '../Taskbar';
 import Menu from '../Menu';
 

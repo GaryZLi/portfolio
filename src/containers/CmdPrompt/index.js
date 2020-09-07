@@ -16,6 +16,7 @@ const useStyles = makeStyles({
         maxWidth: 800,
         backgroundColor: 'white',
         position: 'absolute',
+        border: '1px solid #e3e3e3',
     },
     topContainer: {
         width: '100%',

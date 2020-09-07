@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import WindowTop from '../../components/WindowTop';
 import Toolbar from './Toolbar';
-import AboutMe from './Pages/AboutMe';
 import {
     updateView,
 } from '../../actions';
+import {
+    tabs,
+} from '../../data';
 
 const useStyles = makeStyles({
     root: {
@@ -14,13 +16,13 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
+        position: 'absolute',
     },
     content: {
         height: '100%',
         width: '100%',
         backgroundColor: 'white',
         overflowY: 'auto',
-        paddingBottom: 100,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -30,6 +32,7 @@ const useStyles = makeStyles({
 const IE = ({
     view,
     visible,
+    tabIndex,
     updateView,
 }) => {
     const classes = useStyles();
@@ -45,7 +48,7 @@ const IE = ({
             <WindowTop name='Internet Explorer' color='black' />
             <Toolbar/>
             <div className={classes.content}>
-                <AboutMe/>
+                {tabs[tabIndex]?.component}
             </div>
         </div>
     );
@@ -54,12 +57,15 @@ const IE = ({
 const mapStateToProps = ({
     view,
     visibility,
+    currentTab,
 }) => {
     const visible = visibility['Internet Explorer'];
-    
+    const tabIndex = currentTab.index;
+
     return {
         view,
         visible,
+        tabIndex,
     }
 };
 

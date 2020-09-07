@@ -9,3 +9,7 @@
 - email maybe open it on the IE, and create a email window
 - fix bug of windowTop overlapped on IE from cmd/main
 - make login button loook like abutton
+- on URL, list of suggestions
+- help
+- animate hello my name is
+- index.js:1 Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components

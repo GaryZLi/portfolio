@@ -2,7 +2,13 @@ import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {connect} from 'react-redux';
 import ListWrapper from '../../components/ListWrapper';
-import {updateProjectsList} from '../../actions';
+import {
+    updateProjectsList,
+    updateTab,
+} from '../../actions';
+import {
+    tabs,
+} from '../../data';
 
 const useStyles = makeStyles({
     root: {
@@ -29,30 +35,37 @@ const useStyles = makeStyles({
     }
 });
 
-const ProjectsList = ({updateProjectsList}) => {
+const ProjectsList = ({
+    updateProjectsList,
+    updateTab,
+}) => {
     const classes = useStyles();
-    const list = [
-        'ai Message',
-        'Transcend Life',
-        'User Login Database',
-        'Windows Website Blocker',
-        'Keylogger',
-        'Yelp Decision Generator',
-        'Rob the Mafia',
-        'QuakeUp',
-    ];
+
+    const handleClick = name => {
+        updateTab({
+            name,
+            index: tabs.indexOf(tab => tab.name === name),
+        });
+    };
 
     return (
         <div className={classes.root} onMouseEnter={() => updateProjectsList(true)} onMouseLeave={() => updateProjectsList(false)}>
-            {list.map((proj, id) => 
-                <ListWrapper
-                    key={proj}
-                    className={
-                        id === 0
-                        ? [classes.list, classes.firstList].join(' ')
-                        : classes.list} text={proj}
-                />
-            )}
+            {
+                tabs
+                    .filter(tab => tab.name !== 'About Me' && tab.name !== 'Resume')
+                    .map((proj, id) => 
+                        <ListWrapper
+                            key={proj.name}
+                            className={
+                                id === 0
+                                ? [classes.list, classes.firstList].join(' ')
+                                : classes.list
+                            }
+                            text={proj.name}
+                            handleClick={() => handleClick(proj.name)}
+                        />
+                    )
+            }
         </div>
     );
 };
@@ -61,6 +74,7 @@ const mapStatetoProps = ({projectsList}) => ({projectsList});
 
 const mapDispatchToProps = {
     updateProjectsList,
+    updateTab,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ProjectsList);

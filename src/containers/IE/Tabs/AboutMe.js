@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import profilePic from '../../../picSrc/profile.jpg';
 import {
+    jobs,
     schools,
     skills,
 } from '../../../data';
@@ -12,8 +13,14 @@ const useStyles = makeStyles({
         width: '80%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        paddingBottom: 100,
         fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif',
+    },
+    intro: {
+        width: '100%',
+        textAlign: 'center',
+        marginTop: 100,
+        fontSize: 30,
     },
     title: {
         width: '100%',
@@ -29,8 +36,11 @@ const useStyles = makeStyles({
         width: '100%',
     },
     profilePic: {
+        width: '90%',
+        height: '90%',
         maxHeight: 500,
         maxWidth: 400,
+        minWidth: 300,
         boxShadow: '15px 15px 8px #555',
         borderRadius: 15,
     },
@@ -81,6 +91,13 @@ const useStyles = makeStyles({
         backgroundColor: '#22aae0',
         borderRadius: 20,
     },
+    job: {
+        marginBottom: 30,
+    },
+    jobCompany: {
+        fontSize: 25,
+        fontWeight: 600,
+    }
 });
 
 const AboutMe = ({mobile}) => {
@@ -88,6 +105,14 @@ const AboutMe = ({mobile}) => {
 
     return (
         <div className={classes.root}>
+            <div className={classes.intro}>
+                <span style={{color: '#1cba47'}}>console</span>
+                .
+                <span style={{color: '#f2dd27'}}>log</span>
+                (
+                <span style={{color: '#f5a62f'}}>'Hello! My name is Gary.'</span>
+                );
+            </div>
             <div className={classes.title}>
                 ABOUT
             </div>
@@ -125,9 +150,34 @@ const AboutMe = ({mobile}) => {
             <div className={classes.title}>
                 Work Experience
             </div>
-            <div>
-
-            </div>
+            {
+                jobs.map(job => {
+                    return (
+                        <div
+                            key={job.company}
+                            className={classes.job}
+                            style={{
+                                maxWidth: mobile? '90%' : '70%',
+                            }}
+                        >
+                            <div className={classes.jobCompany}>
+                                {job.company}
+                            </div>
+                            <div>
+                                {job.position} - {job.location}
+                            </div>
+                            <div>
+                                {job.years}
+                            </div>
+                            <ul>
+                                {
+                                    job.description.map((description, id) => <li key={id}>{description}</li>)
+                                }
+                            </ul>
+                        </div> 
+                    );
+                })
+            }
             <div className={classes.title}>
                 Skills
             </div>
@@ -136,7 +186,9 @@ const AboutMe = ({mobile}) => {
                     .sort((a, b) => -(a.level - b.level))
                     .map(skill => {
                         return (
-                            <div className={classes.skillsContainer}>
+                            <div
+                                key={skill.name}
+                                className={classes.skillsContainer}>
                                 <div>
                                     {skill.name}
                                 </div>

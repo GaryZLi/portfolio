@@ -4,7 +4,6 @@ export const initialState = {
     mobile: window.innerWidth < 900,
     screen: 'desktopScreen',
     view: 'startupScreen',
-    ieView: 0, 
     menu: false,
     projectsList: false,
     input: '',
@@ -22,20 +21,12 @@ export const initialState = {
         'Command Prompt': false,
         'Internet Explorer': true,
     },
+    currentTab: {
+        name: 'About Me',
+        index: 0,
+    },
     taskbarWindows: [
         'Internet Explorer',
-    ],
-    tabs: [
-        'About Me',
-        'Resume',
-        'ai Message',
-        'Transcend Life',
-        'User Login Database',
-        'Website Blocker',
-        'Keylogger',
-        'Yelp Decision Maker',
-        'Rob the Mafia',
-        'QuakeUp',
     ],
     cmdList: [],
 };
@@ -108,6 +99,23 @@ const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 input: action.input,
+            };
+
+        case types.UPDATE_TAB:
+            temp = state;
+
+            return {
+                ...state,
+                currentTab: action.tab,
+                view: 'Internet Explorer',
+                visibility: {
+                    ...state.visibility,
+                    'Internet Explorer': true,
+                },
+                windows: {
+                    ...state.windows,
+                    'Internet Explorer': true,
+                },
             };
 
         case types.ADD_TASKBAR_WINDOW:

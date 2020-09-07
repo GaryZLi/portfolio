@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import arrow from '../../picSrc/arrow.png';
 import Tab from '../../components/Tab';
+import {
+    tabs
+} from '../../data';
+import {
+    updateTab,
+    updateInput,
+} from '../../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -68,23 +75,66 @@ const useStyles = makeStyles({
     }
 });
 
-const Toolbar = ({tabs}) => {
+const Toolbar = ({
+    currentTab,
+    updateTab,
+    updateInput,
+}) => {
     const classes = useStyles();
+    const [url, setUrl] = useState(currentTab.name);
+    const tabLength = tabs.length;
+
+    useEffect(() => {
+        setUrl(currentTab.name);
+    }, [currentTab]);
+
+    const handleKeyDown = e => {
+        if (e.key === 'Enter') {
+            updateTab({
+                name: url,
+                index: tabs.findIndex(tab => tab.name.toLowerCase() === url.toLowerCase())
+            });
+        }
+    };
+
+    const handleClick = position => {
+        if (position === 'left') {
+            if (currentTab.index > 0) {
+                updateTab({
+                    name: tabs[currentTab.index - 1].name,
+                    index: currentTab.index - 1,
+                })
+            }
+        }
+        else {
+            if (currentTab.index < tabLength - 1) {
+                updateTab({
+                    name: tabs[currentTab.index + 1].name,
+                    index: currentTab.index + 1,
+                })
+            }
+        }
+    };
 
     return (
         <div className={classes.root}>
-            <input id='urlInput' className={classes.url} onChange={e => console.log(e)}/>
+            <input id='urlInput' className={classes.url} value={url} onChange={e => setUrl(e.target.value)} onKeyDown={handleKeyDown}/>
             <div className={classes.arrowContainer}>
-                <img className={classes.leftArrow} draggable='false' src={arrow} alt='arrow'/>
-                <img className={classes.rightArrow} draggable='false' src={arrow} alt='arrow'/>
+                <img className={classes.leftArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('left')}/>
+                <img className={classes.rightArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('right')}/>
             </div>
             <div className={classes.tabsContainer}>
-                {tabs.map(name => <Tab key={name} name={name}/>)}
+                {tabs.map((tab, index) => <Tab key={tab.name} name={tab.name} index={index}/>)}
             </div>
         </div>
     )
 };
 
-const mapStateToProps = ({tabs}) => ({tabs});
+const mapStateToProps = ({currentTab}) => ({currentTab});
 
-export default connect(mapStateToProps)(Toolbar);
+const mapDispatchToProps = {
+    updateTab,
+    updateInput,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

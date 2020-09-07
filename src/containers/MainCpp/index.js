@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         maxWidth: 800,
         position: 'absolute',
         backgroundColor: 'blue',
-        borderRadius: 10,
+        borderRadius: 5,
     },
     topContainer: {
         width: '100%',
@@ -24,11 +24,11 @@ const useStyles = makeStyles({
         display: 'flex',
     },
     content: {
-        height: 350,
+        height: 355,
         width: '100%',
         flex: 1,
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 5,
+        marginRight: 5,
         backgroundColor: 'white',
         paddingLeft: 10,
     }

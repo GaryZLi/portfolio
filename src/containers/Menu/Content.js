@@ -18,6 +18,7 @@ import {
     updateVisibility,
     updateWindow,
     updateView,
+    updateTab,
     addTaskbarWindow,
 } from '../../actions';
 
@@ -64,6 +65,7 @@ const Content = ({
     updateWindow,
     updateVisibility,
     updateView,
+    updateTab,
     addTaskbarWindow,
 }) => {
     const classes = useStyles();
@@ -75,13 +77,20 @@ const Content = ({
         addTaskbarWindow(window);
     };
 
+    const handleResume = () => {
+        updateTab({
+            name: 'Resume',
+            index: 1,
+        });
+    };
+
     return (
         <div className={classes.content}>
             <div className={classes.programs}>
                 <ListWrapper className={classes.programStyles} icon={IE} text='Internet Explorer' handleClick={() => handleWindow('Internet Explorer')}/>
                 <ListWrapper className={classes.programStyles} icon={<MainCppIcon height={40} width={40}/>} text='main.cpp' handleClick={() => handleWindow('main.cpp')}/>
                 <ListWrapper className={classes.programStyles} icon={<CmdPromptIcon height={40} width={40}/>} text='Command Prompt' handleClick={() => handleWindow('Command Prompt')}/>
-                <ListWrapper className={classes.programStyles} icon={resume} text='Resume' handleClick={() => console.log('clicked resunme')}/>
+                <ListWrapper className={classes.programStyles} icon={resume} text='Resume' handleClick={handleResume}/>
                 <ListWrapper className={classes.programStyles} icon={help} text='Help' handleClick={() => console.log('clicked help')}/>
                 <Projects/>
             </div>
@@ -103,6 +112,7 @@ const mapDispatchToProps = {
     updateVisibility,
     updateWindow,
     updateView,
+    updateTab,
     addTaskbarWindow,
 };
 

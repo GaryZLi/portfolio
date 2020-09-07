@@ -46,6 +46,11 @@ export const updateInput = input => ({
     input,
 });
 
+export const updateTab = tab => ({
+    type: types.UPDATE_TAB,
+    tab,
+});
+
 export const addTaskbarWindow = name => ({
     type: types.ADD_TASKBAR_WINDOW,
     name,
