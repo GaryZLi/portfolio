@@ -20,13 +20,13 @@ const useStyles = makeStyles({
         backgroundColor: 'rgb(14, 190, 224)',
     },
     content: {
-        height: '100%',
+        height: `calc(100% - ${83}px)`,
         width: '100%',
         backgroundColor: 'white',
-        overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        overflow: 'auto',
     },
 });
 

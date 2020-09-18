@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import Slide from '@material-ui/core/Slide';
+import VisibilitySensor from 'react-visibility-sensor';
 
 const useStyles = makeStyles({
     skillsContainer: {
@@ -7,10 +9,10 @@ const useStyles = makeStyles({
         paddingBottom: 30,
     },
     skillProgressContainer: {
-        border: '2px solid #22aae0',
         height: 20,
         width: '100%',
         borderRadius: 20,
+        overflow: 'hidden',
     },
     skillProgress: {
         height: '100%',
@@ -34,14 +36,23 @@ const Skills = ({ skills }) => {
                             {skill.name}
                         </div>
                         <div className={classes.skillProgressContainer}>
-                            <div
-                                className={classes.skillProgress}
-                                style={{ width: `${skill.level}%` }}
-                            />
+                            <Slide in direction='right' timeout={3000} mountOnEnter unmountOnExit>
+                                <div
+                                    className={classes.skillProgress}
+                                    style={{ width: `${skill.level}%` }}
+                                />
+                            </Slide>
                         </div>
-                        <div style={{ marginLeft: `${skill.level}%` }}>
-                            {`${skill.level}%`}
-                        </div>
+                        <Slide in direction='right' timeout={3000} mountOnEnter unmountOnExit>
+                            <div style={{ marginLeft: `${skill.level}%` }}>
+                                {`${skill.level}%`}
+                                <VisibilitySensor active={false} onChange={e => console.log(skill.name)}>
+                                    <div>
+                                        {console.log(skill.name)}
+                                    </div>
+                                </VisibilitySensor>
+                            </div>
+                        </Slide>
                     </div>
                 );
             })
