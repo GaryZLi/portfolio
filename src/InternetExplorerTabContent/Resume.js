@@ -1,5 +1,5 @@
 import React from 'react';
-import resume from "../../../picSrc/Gary Li's Resume.pdf"
+import resume from "../picSrc/Gary Li's Resume.pdf";
 
 const Resume = () => <object data={resume} type="application/pdf" height='100%' width='100%' aria-label="Gary Li's Resume.pdf"/>;
 

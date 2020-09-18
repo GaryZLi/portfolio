@@ -3,8 +3,8 @@ import OaklandHigh from './picSrc/oaklandHigh.jpg';
 import Laney from './picSrc/laney.jpg';
 import UCI from './picSrc/uci.png';
 import CoA from './picSrc/CoA.png';
-import AboutMe from './containers/IE/Tabs/AboutMe';
-import Resume from './containers/IE/Tabs/Resume';
+import AboutMe from './InternetExplorerTabContent/AboutMe';
+import Resume from './InternetExplorerTabContent/Resume';
 
 export const schools = [
     {
@@ -102,6 +102,11 @@ export const jobs = [
         location: 'United States',
         position: 'Fullstack Engineer',
         years: 'Sep 2020 - Present',
+        info: 'Info',
+        start: {
+            month: 9,
+            year: 2020,
+        },
         description: [
             '',
             '',
@@ -114,6 +119,11 @@ export const jobs = [
         location: 'Irvine, CA',
         position: 'Fullstack Engineer',
         years: 'Jul 2020 - Present',
+        info: 'Ippo Earrings is a jewelry startup that sells handcrafted jewelries and customers could order custom made jewelries.',
+        start: {
+            month: 7,
+            year: 2020,
+        },
         description: [
             'Architected client-side using React and Redux and server-side using NodeJS, ExpressJS, MongoDB, and Datadog',
             'Implemented a web monitoring tool to track traffic and user activities to improve product analysis',
@@ -126,6 +136,11 @@ export const jobs = [
         location: 'Gardena, CA',
         position: 'Software Engineer Intern',
         years: 'Jun 2020 - Aug 2020',
+        info: 'Info',
+        start: {
+            month: 6,
+            year: 2020,
+        },
         description: [
             'Created responsive and scalable UI components using ReactJS that are both maintainable and reusable',
             'Developed EpiAnalyst dashboards to enhance the user experiences for over 500 insurance companies',
@@ -138,6 +153,11 @@ export const jobs = [
         location: 'Irvine, CA',
         position: 'Quality Assurance Technician',
         years: 'Mar 2020 - Jun 2020',
+        info: 'Info',
+        start: {
+            month: 3,
+            year: 2020,
+        },
         description: [
             'Programmed Python scripts to automate software testing, resulting in a 60% decrease of manual testing time',
             'Automated web app testing with Selenium improving product delivery speed by 26%',
@@ -149,6 +169,11 @@ export const jobs = [
         location: 'Irvine, CA',
         position: 'Developer',
         years: 'Sep 2019 - Jun 2020',
+        info: 'Info',
+        start: {
+            month: 9,
+            year: 2019,
+        },
         description: [
             'Coordinated with a team of 6 to create a full-stack project for a nonprofit organization that allows users to scrape blogs from various websites and reshare them onto their Shopify blog', 
             'Organized team meetings and tasks to improve productivity and efficiency',
@@ -160,6 +185,11 @@ export const jobs = [
         location: 'Irvine, CA',
         position: 'Appjam+ Program Mentor',
         years: 'Sep 2019 - Dec 2019',
+        info: 'Info',
+        start: {
+            month: 9,
+            year: 2019,
+        },
         description: [
             'Empowered 20 middle schoolers with learning disabilities to develop their interests in computer science', 
             'Mentored 4 kids to give them a hands-on technical experience in building a mobile game app using Thunkable',
@@ -171,6 +201,11 @@ export const jobs = [
         location: 'Castro Valley, CA',
         position: 'Manager',
         years: 'Jan 2014 - Sep 2018',
+        info: 'Info',
+        start: {
+            month: 1,
+            year: 2014,
+        },
         description: [
             'stuf',
             'stuff',

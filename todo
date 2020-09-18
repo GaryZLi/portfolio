@@ -12,3 +12,4 @@
 - help
 - animate hello my name is
 - index.js:1 Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
+- add animation for the skills, (load from 0 -> number) when user scrolls to that section;

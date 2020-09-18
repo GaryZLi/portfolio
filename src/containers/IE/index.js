@@ -37,7 +37,7 @@ const IE = ({
     updateView,
 }) => {
     const classes = useStyles();
-console.log(view === 'Internet Explorer')
+
     return (
         <div
             className={classes.root}
