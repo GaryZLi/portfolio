@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Accordian from '@material-ui/core/Accordion';
 import AccordianSummary from '@material-ui/core/AccordionSummary';

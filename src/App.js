@@ -52,16 +52,18 @@ const App = ({
 		const ieInput = document.getElementById('urlInput');
 
         const handleInput = e => {
-			if (view === 'Internet Explorer' && ieInput) {
-				ieInput.focus();
-			}
-			else {
-				if (cmdInput) {
-					cmdInput.focus();
-					if (view !== 'Command Prompt') updateView('Command Prompt');
+			if (e.key?.length === 1) {
+				if (view === 'Internet Explorer' && ieInput) {
+					ieInput.focus();
+					ieInput.selectionStart = 100;
+				}
+				else {
+					if (cmdInput) {
+						cmdInput.focus();
+						if (view !== 'Command Prompt') updateView('Command Prompt');
+					}
 				}
 			}
-
 			// if (e.key === 'Enter') {
 			// 	e.preventDefault();
 

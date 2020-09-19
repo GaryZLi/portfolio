@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import arrow from '../../picSrc/arrow.png';
@@ -8,7 +8,7 @@ import {
 } from '../../data';
 import {
     updateTab,
-    updateInput,
+    // updateInput,
 } from '../../actions';
 
 const useStyles = makeStyles({
@@ -78,15 +78,27 @@ const useStyles = makeStyles({
 const Toolbar = ({
     currentTab,
     updateTab,
-    updateInput,
+    // updateInput,
 }) => {
     const classes = useStyles();
     const [url, setUrl] = useState(currentTab.name);
+    // const [focus, setFocus] = useState(false);
+    const [listOpened, setListOpened] = useState(false);
+    // let initial = useRef(true);
     const tabLength = tabs.length;
 
-    useEffect(() => {
-        setUrl(currentTab.name);
-    }, [currentTab]);
+    useEffect(() => setUrl(currentTab.name), [currentTab]);
+
+    // useEffect(() => {
+    //     if (initial.current) {
+    //         initial.current = false;
+    //         return;
+    //     }
+        
+    //     console.log('render list')
+
+    // }, [focus]);
+
 
     const handleKeyDown = e => {
         if (e.key === 'Enter') {
@@ -118,7 +130,16 @@ const Toolbar = ({
 
     return (
         <div className={classes.root}>
-            <input id='urlInput' className={classes.url} value={url} onChange={e => setUrl(e.target.value)} onKeyDown={handleKeyDown}/>
+            <input
+                id='urlInput'
+                autoComplete="off"
+                className={classes.url}
+                value={url}
+                onFocus={() => setListOpened(true)}
+                onBlur={() => setListOpened(false)}
+                onChange={e => setUrl(e.target.value)}
+                onKeyDown={handleKeyDown}
+            />
             <div className={classes.arrowContainer}>
                 <img className={classes.leftArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('left')}/>
                 <img className={classes.rightArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('right')}/>
@@ -134,7 +155,7 @@ const mapStateToProps = ({currentTab}) => ({currentTab});
 
 const mapDispatchToProps = {
     updateTab,
-    updateInput,
+    // updateInput,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

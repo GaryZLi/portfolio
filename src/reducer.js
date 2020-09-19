@@ -7,6 +7,7 @@ export const initialState = {
     menu: false,
     projectsList: false,
     input: '',
+    scrollTop: 0,
     visibility: {
         'main.cpp': false,
         'Command Prompt': false,
@@ -116,6 +117,12 @@ const mainReducer = (state = initialState, action) => {
                     ...state.windows,
                     'Internet Explorer': true,
                 },
+            };
+
+        case types.UPDATE_SCROLLTOP:
+            return {
+                ...state,
+                scrollTop: action.scrollTop,
             };
 
         case types.ADD_TASKBAR_WINDOW:

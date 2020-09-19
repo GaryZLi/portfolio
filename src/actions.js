@@ -51,6 +51,11 @@ export const updateTab = tab => ({
     tab,
 });
 
+export const updateScrollTop = scrollTop => ({
+    type: types.UPDATE_SCROLLTOP,
+    scrollTop,
+});
+
 export const addTaskbarWindow = name => ({
     type: types.ADD_TASKBAR_WINDOW,
     name,

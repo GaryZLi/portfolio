@@ -5,6 +5,7 @@ import WindowTop from '../../components/WindowTop';
 import Toolbar from './Toolbar';
 import {
     updateView,
+    updateScrollTop,
 } from '../../actions';
 import {
     tabs,
@@ -35,6 +36,7 @@ const IE = ({
     visible,
     tabIndex,
     updateView,
+    updateScrollTop,
 }) => {
     const classes = useStyles();
 
@@ -46,6 +48,7 @@ const IE = ({
                 zIndex: view === 'Internet Explorer'? 10 : 5,
                 visibility: visible? 'visible' : 'hidden',
             }}
+            onScroll={e => updateScrollTop(e.target.scrollTop)}
         >
             <WindowTop name='Internet Explorer' color='black' />
             <Toolbar/>
@@ -73,6 +76,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
     updateView,
+    updateScrollTop,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IE);
