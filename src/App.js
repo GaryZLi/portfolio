@@ -8,7 +8,7 @@ import LoginScreen from './containers/LoginScreen';
 import DesktopScreen from './containers/DesktopScreen';
 import {
 	updateMobile,
-	updateInput,
+	// updateInput,
 	updateView,
 } from './actions';
 
@@ -24,7 +24,7 @@ const App = ({
 	screen,
 	mobile,
 	view,
-	input,
+	// input,
 	updateMobile,
 	updateView,
 }) => {
@@ -117,17 +117,17 @@ const mapStateToProps = ({
 	screen,
 	mobile,
 	view,
-	input,
+	// input,
 }) => ({
 	screen,
 	mobile,
 	view,
-	input,
+	// input,
 });
 
 const mapDispatchToProps = {
 	updateMobile,
-	updateInput,
+	// updateInput,
 	updateView,
 };
 

@@ -36,6 +36,9 @@ let temp;
 
 const mainReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CLEAR_STATE:
+            return initialState;
+
         case types.UPDATE_MOBILE:
             return {
                 ...state,

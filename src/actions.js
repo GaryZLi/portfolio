@@ -1,5 +1,9 @@
 import * as types from './action-types';
 
+export const clearState = () => ({
+    type: types.CLEAR_STATE,
+});
+
 export const updateMobile = mobile => ({
     type: types.UPDATE_MOBILE,
     mobile,

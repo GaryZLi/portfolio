@@ -5,6 +5,7 @@ import restart from '../../picSrc/restart.png';
 import shutdown from '../../picSrc/shutdown.png';
 import logoff from '../../picSrc/logoff.png';
 import {
+    clearState,
     updateScreen,
 } from '../../actions';
 
@@ -42,24 +43,45 @@ const useStyles = makeStyles({
     }
 });
 
-const SystemButtonsContainer = ({updateScreen}) => {
+const SystemButtonsContainer = ({
+    updateScreen,
+    clearState,
+}) => {
     const classes = useStyles();
 
     return (
         <div className={classes.systemButtonsRoot}>
-            <div className={classes.systemButtonContainer} onClick={() => updateScreen('loginScreen')}>
+            <div
+                className={classes.systemButtonContainer}
+                onClick={() => {
+                    clearState();
+                    updateScreen('loginScreen')
+                }}
+            >
                 <img className={classes.systemButton} src={logoff} alt='logoff'/>
                 <div className={classes.systemButtonText}>
                     Logoff
                 </div>
             </div>
-            <div className={classes.systemButtonContainer} onClick={() => updateScreen('startupScreen')}>
+            <div
+                className={classes.systemButtonContainer}
+                onClick={() => {
+                    clearState();
+                    updateScreen('startupScreen');
+                }
+            }>
                 <img className={classes.systemButton} src={restart} alt='restart'/>
                 <div className={classes.systemButtonText}>
                     Restart
                 </div>
             </div>
-            <div className={classes.systemButtonContainer} onClick={() => updateScreen('blackScreen')}>
+            <div
+                className={classes.systemButtonContainer}
+                onClick={() => {
+                    clearState();
+                    updateScreen('blackScreen');
+                }
+            }>
                 <img className={classes.systemButton} src={shutdown} alt='shutdown'/>
                 <div className={classes.systemButtonText}>
                     Shutdown
@@ -71,6 +93,7 @@ const SystemButtonsContainer = ({updateScreen}) => {
 
 const mapDispatchToProps = {
     updateScreen,
+    clearState,
 };
 
 export default connect(null, mapDispatchToProps)(SystemButtonsContainer);

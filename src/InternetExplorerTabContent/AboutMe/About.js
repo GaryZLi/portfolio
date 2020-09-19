@@ -13,11 +13,13 @@ const useStyles = makeStyles({
         maxHeight: 500,
         maxWidth: 400,
         minWidth: 300,
+        minHeight: 400,
         boxShadow: '15px 15px 8px #555',
         borderRadius: 15,
     },
     description: {
         minWidth: 300,
+        maxWidth: 600,
     },
 });
 
@@ -29,7 +31,7 @@ const About = ({mobile}) => {
             className={classes.aboutMe}
             style={{
                 flexDirection: mobile? 'column' : 'row',
-                justifyContent: mobile? 'space-between' : 'space-between',
+                justifyContent: mobile? 'space-between' : 'center',
                 alignItems: mobile? 'center' : '',
             }}
         >

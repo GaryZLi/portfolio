@@ -33,13 +33,14 @@ const useStyles = makeStyles({
 const TaskbarWindow = ({
     icon,
     name,
+    visibility,
     updateVisibility,
     updateView,
 }) => {
     const classes = useStyles();
 
     const handleClick = () => {
-        updateVisibility(name, true);
+        updateVisibility(name, !visibility[name]);
         updateView(name);
     };
 
@@ -60,9 +61,11 @@ const TaskbarWindow = ({
     );
 };
 
+const mapStateToProps = ({visibility}) => ({visibility});
+
 const mapDispatchToProps = {
     updateVisibility,
     updateView,
 };
 
-export default connect(null, mapDispatchToProps)(TaskbarWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskbarWindow);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import arrow from '../../picSrc/arrow.png';
@@ -50,14 +50,38 @@ const useStyles = makeStyles({
             boxShadow: 'inset 0px 0px 5px rgb(220,220,220)',
         }
     },
+    urlContainer: {
+        position: 'relative',
+    },
     url: {
-        height: '80%',
-        width: 250,
         marginLeft: 10,
+        width: 200,
         minWidth: 100,
         fontSize: 20,
         padding: '1px 2px 1px 10px',
+    },
+    urlList: {
+        position: 'absolute',
+        maxHeight: 300,
+        width: `calc(100% - ${10}px)`,
+        minWidth: 100,
+        minHeight: 35,
+        fontSize: 20,
+        backgroundColor: 'white',
+        left: 10,
+        borderRadius: 5,
         border: '1px solid black',
+        overflow: 'auto',
+        zIndex: 3,
+    },
+    urlOption: {
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+        '&:hover': {
+            backgroundColor: '#a4d3fc',
+            cursor: 'pointer',
+        }
     },
     tabsContainer: {
         borderLeft: '1px solid gray',
@@ -82,23 +106,10 @@ const Toolbar = ({
 }) => {
     const classes = useStyles();
     const [url, setUrl] = useState(currentTab.name);
-    // const [focus, setFocus] = useState(false);
     const [listOpened, setListOpened] = useState(false);
-    // let initial = useRef(true);
     const tabLength = tabs.length;
 
     useEffect(() => setUrl(currentTab.name), [currentTab]);
-
-    // useEffect(() => {
-    //     if (initial.current) {
-    //         initial.current = false;
-    //         return;
-    //     }
-        
-    //     console.log('render list')
-
-    // }, [focus]);
-
 
     const handleKeyDown = e => {
         if (e.key === 'Enter') {
@@ -130,16 +141,39 @@ const Toolbar = ({
 
     return (
         <div className={classes.root}>
-            <input
-                id='urlInput'
-                autoComplete="off"
-                className={classes.url}
-                value={url}
-                onFocus={() => setListOpened(true)}
-                onBlur={() => setListOpened(false)}
-                onChange={e => setUrl(e.target.value)}
-                onKeyDown={handleKeyDown}
-            />
+            <div className={classes.urlContainer}>
+                <input
+                    id='urlInput'
+                    autoComplete="off"
+                    className={classes.url}
+                    value={url}
+                    onFocus={() => setListOpened(true)}
+                    onBlur={() => setListOpened(false)}
+                    onChange={e => setUrl(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                />
+                {listOpened && (
+                    <div className={classes.urlList}>
+                        {tabs
+                            .filter(tab => tab.name.includes(url))
+                            .map(tab =>
+                                <div
+                                    key={tab.name}
+                                    className={classes.urlOption}
+                                    onMouseDown={() => 
+                                        updateTab({
+                                            name: tab.name,
+                                            index: tabs.findIndex(t => t.name === tab.name)
+                                        })
+                                    }
+                                >
+                                    {tab.name}
+                                </div>
+                            )
+                        }
+                    </div>
+                )}
+            </div>
             <div className={classes.arrowContainer}>
                 <img className={classes.leftArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('left')}/>
                 <img className={classes.rightArrow} draggable='false' src={arrow} alt='arrow' onClick={() => handleClick('right')}/>

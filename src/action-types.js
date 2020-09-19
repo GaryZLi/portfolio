@@ -1,3 +1,4 @@
+export const CLEAR_STATE = 'CLEAR_STATE';
 export const UPDATE_MOBILE = 'UPDATE_MOBILE';
 export const UPDATE_SCREEN = 'UPDATE_SCREEN';
 export const UPDATE_VIEW = 'UPDATE_VIEW';
