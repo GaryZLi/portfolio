@@ -9,6 +9,8 @@
 - animate hello my name is
 - index.js:1 Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
 - add animation for the skills, (load from 0 -> number) when user scrolls to that section;
-- take out max buttons
-- add clouds
-- start menu close when out of focus
+- add info for jobs/ fix job descriptions
+- update resume pdf
+- fix font sizes (on resize too)
+- fix cloud timeing
+- delete updateInput?

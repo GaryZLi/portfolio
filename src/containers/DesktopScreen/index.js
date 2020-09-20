@@ -8,7 +8,7 @@ import CmdPrompt from '../CmdPrompt';
 import IE from '../IE/index.js';
 import Taskbar from '../Taskbar';
 import Menu from '../Menu';
-import Clouds from '../Clouds';
+import Cloud from '../Cloud';
 
 const useStyles = makeStyles({
     root: {
@@ -21,13 +21,20 @@ const useStyles = makeStyles({
         height: '100%',
         width: '100%',
         position: 'relative',
-        backgroundColor: 'rgb(44, 188, 255)',
         backgroundImage: `url(${grassland})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         overflow: 'hidden',
+        zIndex: 10,
+    },
+    clouds: {
+        height: '100vh',
+        width: '100vw',
+        backgroundColor: 'rgb(44, 188, 255)',
+        position: 'fixed',
+        zIndex: -1,
     },
 });
 
@@ -38,7 +45,9 @@ const DesktopScreen = ({
 
     return (
         <div className={classes.root}>
-            <Clouds/>
+            <div className={classes.clouds}>
+                {Array(6).fill(true).map((e, i) => <Cloud key={i} number={i % 4}/>)}
+            </div>
             <div className={classes.container}>
                 {windows['main.cpp'] && <MainCpp/>}
                 {windows['Command Prompt'] && <CmdPrompt/>}

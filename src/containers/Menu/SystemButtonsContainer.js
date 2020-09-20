@@ -53,10 +53,7 @@ const SystemButtonsContainer = ({
         <div className={classes.systemButtonsRoot}>
             <div
                 className={classes.systemButtonContainer}
-                onClick={() => {
-                    clearState();
-                    updateScreen('loginScreen')
-                }}
+                onClick={() => updateScreen('loginScreen')}
             >
                 <img className={classes.systemButton} src={logoff} alt='logoff'/>
                 <div className={classes.systemButtonText}>
@@ -65,11 +62,8 @@ const SystemButtonsContainer = ({
             </div>
             <div
                 className={classes.systemButtonContainer}
-                onClick={() => {
-                    clearState();
-                    updateScreen('startupScreen');
-                }
-            }>
+                onClick={() => updateScreen('startupScreen')}
+            >
                 <img className={classes.systemButton} src={restart} alt='restart'/>
                 <div className={classes.systemButtonText}>
                     Restart
@@ -77,11 +71,8 @@ const SystemButtonsContainer = ({
             </div>
             <div
                 className={classes.systemButtonContainer}
-                onClick={() => {
-                    clearState();
-                    updateScreen('blackScreen');
-                }
-            }>
+                onClick={() => updateScreen('blackScreen')}
+            >
                 <img className={classes.systemButton} src={shutdown} alt='shutdown'/>
                 <div className={classes.systemButtonText}>
                     Shutdown

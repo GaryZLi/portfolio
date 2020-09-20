@@ -8,7 +8,6 @@ import LoginScreen from './containers/LoginScreen';
 import DesktopScreen from './containers/DesktopScreen';
 import {
 	updateMobile,
-	// updateInput,
 	updateView,
 } from './actions';
 
@@ -24,7 +23,6 @@ const App = ({
 	screen,
 	mobile,
 	view,
-	// input,
 	updateMobile,
 	updateView,
 }) => {
@@ -60,27 +58,11 @@ const App = ({
 				else {
 					if (cmdInput) {
 						cmdInput.focus();
+						cmdInput.selectionStart = 100;
 						if (view !== 'Command Prompt') updateView('Command Prompt');
 					}
 				}
 			}
-			// if (e.key === 'Enter') {
-			// 	e.preventDefault();
-
-			// 	// handleEnter from actions
-			// 	// handleEnter(inputRef.current.innerText);
-			// }
-			// else if (e.key === 'Backspace') {
-
-			// 	// inputRef.current.innerText = inputRef.current.innerText.substring(0, inputRef.current.innerText.length - 1);
-			// }
-			// else if (e.keyCode === 32) {
-			// 	// inputRef.current.innerText += '\u00A0';
-			// }
-			// else if (e.key.length === 1) {
-			// 	// inputRef.current.innerText += e.key;
-			// }
-			// // updateInput(input + e.key);
         }
 
         document.addEventListener('keydown', handleInput);
@@ -117,17 +99,14 @@ const mapStateToProps = ({
 	screen,
 	mobile,
 	view,
-	// input,
 }) => ({
 	screen,
 	mobile,
 	view,
-	// input,
 });
 
 const mapDispatchToProps = {
 	updateMobile,
-	// updateInput,
 	updateView,
 };
 

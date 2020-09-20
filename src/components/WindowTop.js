@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
 import MinimizeButton from '../components/MinimizeButton';
-import MaximizeButton from '../components/MaximizeButton';
 import CloseButton from '../components/CloseButton';
 import {
     updateVisibility,
@@ -41,7 +40,6 @@ const useStyles = makeStyles({
 const WindowTop = ({
     name,
     color,
-    max,
     draggable,
     updateWindow,
     updateView,
@@ -54,8 +52,6 @@ const WindowTop = ({
         switch (action) {
             case 'minimize':
                 updateVisibility(name, false);
-                break;
-            case 'maximize':
                 break;
             default:
                 updateWindow(name, false);
@@ -73,7 +69,6 @@ const WindowTop = ({
             </div>
             <div className={classes.buttonContainer}>
                 <MinimizeButton height='90%' width={50} color={color} onClick={() => handleClick('minimize')}/>
-                {max && <MaximizeButton height='90%' width={50} color={color} onClick={() => handleClick('maximize')}/>}
                 <CloseButton height='90%' width={50} color={color} onClick={() => handleClick('close')}/>
             </div>
         </div>

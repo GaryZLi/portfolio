@@ -63,7 +63,7 @@ const useStyles = makeStyles({
     urlList: {
         position: 'absolute',
         maxHeight: 300,
-        width: `calc(100% - ${10}px)`,
+        width: `calc(100% - ${12}px)`,
         minWidth: 100,
         minHeight: 35,
         fontSize: 20,
@@ -144,7 +144,9 @@ const Toolbar = ({
             <div className={classes.urlContainer}>
                 <input
                     id='urlInput'
-                    autoComplete="off"
+                    autoComplete='off'
+                    autoCorrect='off'
+                    spellCheck='false'
                     className={classes.url}
                     value={url}
                     onFocus={() => setListOpened(true)}
@@ -155,7 +157,7 @@ const Toolbar = ({
                 {listOpened && (
                     <div className={classes.urlList}>
                         {tabs
-                            .filter(tab => tab.name.includes(url))
+                            .filter(tab => tab.name.toLowerCase().includes(url.toLowerCase()))
                             .map(tab =>
                                 <div
                                     key={tab.name}

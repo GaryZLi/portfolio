@@ -19,8 +19,9 @@ export const updateView = view => ({
     view,
 });
 
-export const updateMenu = () => ({
+export const updateMenu = active => ({
     type: types.UPDATE_MENU,
+    active,
 });
 
 export const updateProjectsList = on => ({

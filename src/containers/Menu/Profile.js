@@ -1,6 +1,11 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
+import { connect } from 'react-redux';
 import profilepic from '../../picSrc/profile.jpg';
+import {
+    updateTab,
+    updateMenu,
+} from '../../actions';
 
 const useStyles = makeStyles({
     profile: {
@@ -26,12 +31,27 @@ const useStyles = makeStyles({
     },
 });
 
-const Profile = () => {
+const Profile = ({
+    updateTab,
+    updateMenu,
+}) => {
     const classes = useStyles();
 
     return (
         <div className={classes.profile}>
-            <img className={classes.profilePic} src={profilepic} alt='profile pic' draggable='false' />
+            <img
+                className={classes.profilePic}
+                src={profilepic}
+                alt='profile pic'
+                draggable='false'
+                onClick={() => {
+                    updateTab({
+                        name:"About Me",
+                        index: 0,
+                    });
+                    updateMenu(false);
+                }}
+            />
             <div className={classes.profileText}>
                 Gary Li
             </div>
@@ -39,4 +59,9 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+const mapDispatchToProps = {
+    updateTab,
+    updateMenu,
+};
+
+export default connect(null, mapDispatchToProps)(Profile);

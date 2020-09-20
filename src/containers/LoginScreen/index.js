@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/styles';
 import { connect } from 'react-redux';
 import {
     Slide,
-    Fade
+    Fade,
 } from '@material-ui/core';
 import {updateScreen} from '../../actions';
 import powerButton from '../../picSrc/powerbutton.jpg';
@@ -44,7 +44,7 @@ const LoginScreen = ({updateScreen}) => {
     const handleDown = () => setStyles({
         height: 70,
         width: 70,
-        border: '5px white solid',
+        border: '1px white solid',
     });
 
     const handleUp = () => {
@@ -59,7 +59,8 @@ const LoginScreen = ({updateScreen}) => {
     return (
         <div className={classes.root}>
             <Slide in timeout={2500} direction={"left"}>
-                <img className={classes.loginButton}
+                <img 
+                    className={classes.loginButton}
                     src={powerButton}
                     draggable='false'
                     alt='login button'

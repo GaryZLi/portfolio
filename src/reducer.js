@@ -8,33 +8,27 @@ export const initialState = {
     projectsList: false,
     input: '',
     scrollTop: 0,
+    taskbarWindows: [],
+    cmdList: [],
     visibility: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': true,
-    },
-    maximized: {
-        'Command Prompt': false,
-        'main.cpp': false,
+        'Internet Explorer': false,
     },
     windows: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': true,
+        'Internet Explorer': false,
     },
     currentTab: {
         name: 'About Me',
         index: 0,
     },
-    taskbarWindows: [
-        'Internet Explorer',
-    ],
-    cmdList: [],
 };
 
 let temp;
 
-const mainReducer = (state = initialState, action) => {
+const mainReducer = (state = JSON.parse(JSON.stringify(initialState)), action) => {
     switch (action.type) {
         case types.CLEAR_STATE:
             return initialState;
@@ -46,9 +40,11 @@ const mainReducer = (state = initialState, action) => {
             };
 
         case types.UPDATE_SCREEN:
+            temp = JSON.parse(JSON.stringify(initialState));
+            temp.screen = action.screen;
+
             return {
-                ...state,
-                screen: action.screen,
+                ...temp,
             };
 
         case types.UPDATE_VIEW:
@@ -60,12 +56,13 @@ const mainReducer = (state = initialState, action) => {
         case types.UPDATE_MENU:
             return {
                 ...state,
-                menu: !state.menu,
+                menu: action.active === undefined? !state.menu : action.active,
             };
 
         case types.UPDATE_WINDOW:            
             temp = state.windows;
             temp[action.window] = action.open;
+
             return {
                 ...state,
                 windows: {
@@ -93,10 +90,12 @@ const mainReducer = (state = initialState, action) => {
         case types.UPDATE_COMMAND_LIST:
             return {
                 ...state,
-                cmdList: [
-                    ...state.cmdList,
-                    action.cmd,
-                ]
+                cmdList: action.cmd
+                    ? [
+                        ...state.cmdList,
+                        action.cmd,
+                    ]
+                    : [],
             };
         
         case types.UPDATE_INPUT:

@@ -41,7 +41,7 @@ const MainCpp = ({
 }) => {
     const classes = useStyles();
     const containerRef = useRef();
-    const [position, setPosition] = useState([10, 11]);
+    const [position, setPosition] = useState([0, 0]);
     const [dragging, setDragging] = useState(false);
 
     useEffect(() => {
@@ -86,7 +86,6 @@ const MainCpp = ({
                     name='main.cpp'
                     color='white'
                     draggable
-                    max
                 />
             </div>
             <div className={classes.contentContainer}>

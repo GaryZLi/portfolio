@@ -19,6 +19,7 @@ import {
     updateWindow,
     updateView,
     updateTab,
+    updateMenu,
     addTaskbarWindow,
 } from '../../actions';
 
@@ -66,6 +67,7 @@ const Content = ({
     updateVisibility,
     updateView,
     updateTab,
+    updateMenu,
     addTaskbarWindow,
 }) => {
     const classes = useStyles();
@@ -75,6 +77,7 @@ const Content = ({
         updateVisibility(window, true);
         updateView(window);
         addTaskbarWindow(window);
+        updateMenu();
     };
 
     const handleResume = () => {
@@ -113,6 +116,7 @@ const mapDispatchToProps = {
     updateWindow,
     updateView,
     updateTab,
+    updateMenu,
     addTaskbarWindow,
 };
 
