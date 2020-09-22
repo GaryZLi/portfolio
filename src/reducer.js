@@ -60,15 +60,21 @@ const mainReducer = (state = JSON.parse(JSON.stringify(initialState)), action) =
             };
 
         case types.UPDATE_WINDOW:            
-            temp = state.windows;
-            temp[action.window] = action.open;
+            temp = JSON.parse(JSON.stringify(state));
+            temp.windows[action.window] = action.open;
+            temp.visibility[action.window] = action.open;
+            temp.view = action.window;
+            
+            if (action.open) {
+                if (temp.taskbarWindows.indexOf(action.window) < 0) {
+                    temp.taskbarWindows.push(action.window);
+                }
+            }
+            else {
+                temp.taskbarWindows.splice(temp.taskbarWindows.indexOf(action.window), 1);
+            }
 
-            return {
-                ...state,
-                windows: {
-                    ...temp,
-                },
-            };
+            return temp;
 
         case types.UPDATE_VISIBILITY:            
             temp = state.visibility;
@@ -105,21 +111,17 @@ const mainReducer = (state = JSON.parse(JSON.stringify(initialState)), action) =
             };
 
         case types.UPDATE_TAB:
-            temp = state;
+            temp = JSON.parse(JSON.stringify(state));
+            temp.currentTab = action.tab;
+            temp.view = 'Internet Explorer';
+            temp.visibility['Internet Explorer'] = true;
+            temp.windows['Internet Explorer'] = true;
 
-            return {
-                ...state,
-                currentTab: action.tab,
-                view: 'Internet Explorer',
-                visibility: {
-                    ...state.visibility,
-                    'Internet Explorer': true,
-                },
-                windows: {
-                    ...state.windows,
-                    'Internet Explorer': true,
-                },
-            };
+            if (temp.taskbarWindows.indexOf('Internet Explorer') < 0) {
+                temp.taskbarWindows.push('Internet Explorer');
+            }
+
+            return temp;
 
         case types.UPDATE_SCROLLTOP:
             return {

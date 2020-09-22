@@ -46,16 +46,18 @@ const App = ({
 	}, [mobile, updateMobile]);
 
 	useEffect(() => {        
-		const cmdInput = document.getElementById('cmdInput');
 		const ieInput = document.getElementById('urlInput');
+		let cmdInput = document.getElementById('cmdInput');
 
-        const handleInput = e => {
+		const handleInput = e => {
 			if (e.key?.length === 1) {
 				if (view === 'Internet Explorer' && ieInput) {
 					ieInput.focus();
 					ieInput.selectionStart = 100;
 				}
 				else {
+					if (!cmdInput) cmdInput = document.getElementById('cmdInput');
+
 					if (cmdInput) {
 						cmdInput.focus();
 						cmdInput.selectionStart = 100;

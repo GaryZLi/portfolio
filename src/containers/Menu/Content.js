@@ -15,12 +15,9 @@ import facebook from '../../picSrc/facebook.png';
 import instagram from '../../picSrc/instagram.png';
 import gmail from '../../picSrc/gmail.png';
 import {
-    updateVisibility,
     updateWindow,
-    updateView,
     updateTab,
     updateMenu,
-    addTaskbarWindow,
 } from '../../actions';
 
 const useStyles = makeStyles({
@@ -64,19 +61,13 @@ const useStyles = makeStyles({
 const Content = ({
     projectsList,
     updateWindow,
-    updateVisibility,
-    updateView,
     updateTab,
     updateMenu,
-    addTaskbarWindow,
 }) => {
     const classes = useStyles();
 
     const handleWindow = window => {
         updateWindow(window, true);
-        updateVisibility(window, true);
-        updateView(window);
-        addTaskbarWindow(window);
         updateMenu();
     };
 
@@ -85,6 +76,7 @@ const Content = ({
             name: 'Resume',
             index: 1,
         });
+        updateMenu();
     };
 
     return (
@@ -112,12 +104,9 @@ const Content = ({
 const mapStatetoProps = ({projectsList}) => ({projectsList});
 
 const mapDispatchToProps = {
-    updateVisibility,
     updateWindow,
-    updateView,
     updateTab,
     updateMenu,
-    addTaskbarWindow,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Content);

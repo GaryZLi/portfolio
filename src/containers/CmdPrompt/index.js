@@ -20,9 +20,9 @@ const commands = [
     'main.cpp',
     'internet explorer',
     'command prompt',
-    'cls',
-    'minimize',
-    'exit',
+    'clear',
+    // 'minimize',
+    // 'exit',
     'echo',
     ...tabs.map(tab => tab.name),
 ];
@@ -43,6 +43,7 @@ const useStyles = makeStyles({
     },
     content: {
         height: 300,
+        paddingBottom: 10,
         width: '100%',
         backgroundColor: 'black',
         color: 'white',
@@ -103,6 +104,10 @@ const CmdPrompt = ({
         }
 
         textInput = textInput.toLowerCase();
+
+        if (textInput === 'help') {
+            return commands.forEach((command, i) => updateCommandList(`${i + 1}) ${command}`));
+        }
     
         let index = commands.findIndex(command => command.toLowerCase() === textInput);
 
@@ -125,7 +130,7 @@ const CmdPrompt = ({
             else if (commands[index] === 'command prompt') {
                 updateWindow('Command Prompt', true);
             }
-            else if (commands[index] === 'cls') {
+            else if (commands[index] === 'clear') {
                 updateCommandList();
             }
             // else if (commands[index] === 'minimize') {

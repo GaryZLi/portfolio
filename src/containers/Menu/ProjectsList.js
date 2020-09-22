@@ -5,6 +5,7 @@ import ListWrapper from '../../components/ListWrapper';
 import {
     updateProjectsList,
     updateTab,
+    updateMenu,
 } from '../../actions';
 import {
     tabs,
@@ -38,6 +39,7 @@ const useStyles = makeStyles({
 const ProjectsList = ({
     updateProjectsList,
     updateTab,
+    updateMenu,
 }) => {
     const classes = useStyles();
 
@@ -46,6 +48,7 @@ const ProjectsList = ({
             name,
             index: tabs.indexOf(tab => tab.name === name),
         });
+        updateMenu();
     };
 
     return (
@@ -75,6 +78,7 @@ const mapStatetoProps = ({projectsList}) => ({projectsList});
 const mapDispatchToProps = {
     updateProjectsList,
     updateTab,
+    updateMenu,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ProjectsList);
