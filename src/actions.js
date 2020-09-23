@@ -46,11 +46,6 @@ export const updateVisibility = (window, visible) => ({
     visible,
 });
 
-export const updateInput = input => ({
-    type: types.UPDATE_INPUT,
-    input,
-});
-
 export const updateTab = tab => ({
     type: types.UPDATE_TAB,
     tab,

@@ -21,13 +21,9 @@ const commands = [
     'internet explorer',
     'command prompt',
     'clear',
-    // 'minimize',
-    // 'exit',
     'echo',
     ...tabs.map(tab => tab.name),
 ];
-
-console.log(commands)
 
 const useStyles = makeStyles({
     root: {
@@ -58,8 +54,9 @@ const useStyles = makeStyles({
         color: 'black',
         outline: 'none',
         paddingRight: 4,
-        caretColor: 'white',
+        caretColor: 'transparent',
         overflow: 'hidden',
+        userSelect: 'text',
     },
 });
 
@@ -133,14 +130,6 @@ const CmdPrompt = ({
             else if (commands[index] === 'clear') {
                 updateCommandList();
             }
-            // else if (commands[index] === 'minimize') {
-            //     console.log(visibility, view, visibility[view])
-            //     if (visibility[view]) {
-            //     }
-            // }
-            // else if (commands[index] === 'exit') {
-
-            // }
             else {
                 updateTab({
                     name: commands[index],
@@ -165,6 +154,7 @@ const CmdPrompt = ({
             className={classes.root}
             ref={containerRef}
             onMouseDown={() => view === 'Command Prompt' || updateView('Command Prompt')}
+            onTouchStart={() => view === 'Command Prompt' || updateView('Command Prompt')}
             style={{
                 left: position[0],
                 top: position[1],

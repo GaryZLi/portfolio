@@ -13,12 +13,12 @@ export const initialState = {
     visibility: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': false,
+        'Internet Explorer': true,
     },
     windows: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': false,
+        'Internet Explorer': true,
     },
     currentTab: {
         name: 'About Me',
@@ -104,12 +104,6 @@ const mainReducer = (state = JSON.parse(JSON.stringify(initialState)), action) =
                     : [],
             };
         
-        case types.UPDATE_INPUT:
-            return {
-                ...state,
-                input: action.input,
-            };
-
         case types.UPDATE_TAB:
             temp = JSON.parse(JSON.stringify(state));
             temp.currentTab = action.tab;

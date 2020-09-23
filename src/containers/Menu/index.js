@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { connect } from 'react-redux';
 import Profile from './Profile';
@@ -27,9 +27,17 @@ const Menu = ({
 }) => {
     const classes = useStyles();
 
-    if (menu) {
-        setTimeout(() => document.getElementById('menu').focus(), 100);
-    }
+    useEffect(() => {
+        const handleClickClosingMenu = e => {
+            if (menu && e.path && (!e.path.includes(document.getElementById('menu')) && !e.path.includes(document.getElementById('startMenu')))) {
+                updateMenu();
+            }
+        };
+
+        document.addEventListener('click', handleClickClosingMenu);
+
+        return () => document.removeEventListener('click', handleClickClosingMenu);
+    }, [menu, updateMenu]);
 
     return (
         <div
@@ -37,7 +45,6 @@ const Menu = ({
             tabIndex={-1}
             className={classes.root}
             style={{visibility: menu? 'visible' : 'hidden'}}
-            onBlur={() => setTimeout(() => updateMenu(false), 100)}
         >
             <Profile/>
             <Content/>
@@ -52,4 +59,4 @@ const mapDispatchToProps = {
     updateMenu,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps,mapDispatchToProps)(Menu);

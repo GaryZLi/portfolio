@@ -49,7 +49,7 @@ const Profile = ({
                         name:"About Me",
                         index: 0,
                     });
-                    updateMenu(false);
+                    updateMenu();
                 }}
             />
             <div className={classes.profileText}>

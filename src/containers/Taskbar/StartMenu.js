@@ -33,7 +33,7 @@ const StartMenu = ({
     const classes = useStyles();
 
     return (
-        <div className={classes.startMenu} onClick={() => updateMenu()}>
+        <div id='startMenu' className={classes.startMenu} onClick={() => updateMenu()}>
             <WindowsLogo height={30} width={30}/>
             <div className={classes.text}>
                 Start

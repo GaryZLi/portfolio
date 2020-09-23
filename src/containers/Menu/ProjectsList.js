@@ -46,7 +46,7 @@ const ProjectsList = ({
     const handleClick = name => {
         updateTab({
             name,
-            index: tabs.indexOf(tab => tab.name === name),
+            index: tabs.findIndex(tab => tab.name === name),
         });
         updateMenu();
     };

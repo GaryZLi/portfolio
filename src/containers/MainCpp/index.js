@@ -67,6 +67,7 @@ const MainCpp = ({
             className={classes.root}
             ref={containerRef}
             onMouseDown={() => view === 'main.cpp' || updateView('main.cpp')}
+            onTouchStart={() => view === 'main.cpp' || updateView('main.cpp')}
             style={{
                 left: position[0],
                 top: position[1],

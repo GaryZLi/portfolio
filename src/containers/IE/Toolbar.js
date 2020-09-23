@@ -8,7 +8,6 @@ import {
 } from '../../data';
 import {
     updateTab,
-    // updateInput,
 } from '../../actions';
 
 const useStyles = makeStyles({
@@ -55,7 +54,7 @@ const useStyles = makeStyles({
     },
     url: {
         marginLeft: 10,
-        width: 200,
+        width: Math.min(200, window.innerWidth / 3),
         minWidth: 100,
         fontSize: 20,
         padding: '1px 2px 1px 10px',
@@ -102,7 +101,6 @@ const useStyles = makeStyles({
 const Toolbar = ({
     currentTab,
     updateTab,
-    // updateInput,
 }) => {
     const classes = useStyles();
     const [url, setUrl] = useState(currentTab.name);
@@ -191,7 +189,6 @@ const mapStateToProps = ({currentTab}) => ({currentTab});
 
 const mapDispatchToProps = {
     updateTab,
-    // updateInput,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

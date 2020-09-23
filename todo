@@ -1,10 +1,5 @@
-- fix can't type issue on mobile (ios)
-- work on ie
-- email maybe open it on the IE, and create a email window
-- make login button loook like abutton
 - help
 - add info for jobs/ fix job descriptions
-- update resume pdf
 - fix font sizes (on resize too)
-- fix cloud timeing
 - delete updateInput?
+- fix cmd prompt typing issue on ipad

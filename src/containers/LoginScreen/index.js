@@ -65,7 +65,9 @@ const LoginScreen = ({updateScreen}) => {
                     draggable='false'
                     alt='login button'
                     onMouseDown={handleDown}
+                    onTouchStart={handleDown}
                     onMouseUp={handleUp}
+                    onTouchEnd={handleUp}
                     style={styles}
                 />
             </Slide>

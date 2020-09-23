@@ -16,6 +16,8 @@ const useStyles = makeStyles({
         height: '100%',
         width: '100%',
         display: 'flex',
+        // display: '-webkit-flex',
+        // display: '-ms-flexbox',
         flexDirection: 'column',
         position: 'absolute',
         backgroundColor: 'rgb(14, 190, 224)',
@@ -25,6 +27,10 @@ const useStyles = makeStyles({
         width: '100%',
         backgroundColor: 'white',
         display: 'flex',
+        // display: '-webkit-flex',
+        // display: '-ms-flexbox',
+        // webkitFlexDirection: 'column', 
+        // msFlexDirection: 'column',
         flexDirection: 'column',
         alignItems: 'center',
         overflow: 'auto',
@@ -44,6 +50,7 @@ const IE = ({
         <div
             className={classes.root}
             onMouseDown={() => view === 'Internet Explorer' || updateView('Internet Explorer')}
+            onTouchStart={() => view === 'Internet Explorer' || updateView('Internet Explorer')}
             style={{
                 zIndex: view === 'Internet Explorer'? 10 : 5,
                 visibility: visible? 'visible' : 'hidden',

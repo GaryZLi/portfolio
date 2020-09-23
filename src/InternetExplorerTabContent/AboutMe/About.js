@@ -31,6 +31,7 @@ const About = ({mobile}) => {
             className={classes.aboutMe}
             style={{
                 flexDirection: mobile? 'column' : 'row',
+                
                 justifyContent: mobile? 'space-between' : 'center',
                 alignItems: mobile? 'center' : '',
             }}
@@ -45,7 +46,8 @@ const About = ({mobile}) => {
                 }}
             >
                 Hello my name is Gary Li.
-                I am unable to capture who I am as much on a piece of paper, so welcome to my personal portfolio.
+                Welcome to my personal portfolio.
+                I can capture who I am as a person better on here than a piece of paper. 
                 I am a graduate from University of California, Irvine with a Bachelors of Science in Computer Science.
                 Sometimes, I love going to Youtube on Google Chrome's incognito mode and play a song.
                 The automatically generated playlist usually helps me discover new songs that I have not heard of before.
