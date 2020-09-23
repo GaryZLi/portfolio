@@ -20,7 +20,6 @@ const DefaultContent = () => {
                 <div style={{ height: '5px' }} />
             <span style={{ textDecoration: 'underline' }}>Hobbies</span>: Skateboarding&emsp;|&emsp;Breakdancing&emsp;|&emsp;Running&emsp;|&emsp;Swimming&emsp;|&emsp;Eating
                 <div style={{ height: '5px' }} />
-            {/* <span style={{textDecoration: 'underline'}}>Resume</span>: <span className='resume' onClick={() => this.props.switchProject('resume')}>Gary Li's Resume</span> */}
             <div style={{ height: '5px' }} />
         </div>
     );

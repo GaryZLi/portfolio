@@ -58,7 +58,6 @@ const useStyles = makeStyles({
         marginRight: 10,
     },
     detailContainer: {
-        // minHeight: 100,
     },
     link: {
         textDecorationColor: 'blue',

@@ -16,7 +16,6 @@ const Skills = ({
 }) => {
     const classes = useStyles();
     const [active, setActive] = useState({});
-    // const [timers, setTimers] = useState({});
 
     return (
         skills

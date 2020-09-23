@@ -5,11 +5,13 @@ import TaskbarWindow from '../../components/TaskbarWindow';
 import ie from '../../picSrc/IE.png';
 import CmdPromptIcon from '../../components/CmdPromptIcon';
 import MainCppIcon from '../../components/MainCppIcon';
+import Help from '../../picSrc/help.png';
 
 const iconMap = {
     'Internet Explorer': ie,
     'Command Prompt': <CmdPromptIcon height={30} width={30}/>,
     'main.cpp': <MainCppIcon height={30} width={30}/>,
+    'Help': Help, 
 }
 
 const useStyles = makeStyles({

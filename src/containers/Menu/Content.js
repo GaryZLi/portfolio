@@ -6,6 +6,7 @@ import ProjectsList from './ProjectsList';
 import ListWrapper from '../../components/ListWrapper';
 import MainCppIcon from '../../components/MainCppIcon';
 import CmdPromptIcon from '../../components/CmdPromptIcon';
+
 import IE from '../../picSrc/IE.png';
 import resume from '../../picSrc/resume.png';
 import help from '../../picSrc/help.png';
@@ -86,7 +87,7 @@ const Content = ({
                 <ListWrapper className={classes.programStyles} icon={<MainCppIcon height={40} width={40}/>} text='main.cpp' handleClick={() => handleWindow('main.cpp')}/>
                 <ListWrapper className={classes.programStyles} icon={<CmdPromptIcon height={40} width={40}/>} text='Command Prompt' handleClick={() => handleWindow('Command Prompt')}/>
                 <ListWrapper className={classes.programStyles} icon={resume} text='Resume' handleClick={handleResume}/>
-                <ListWrapper className={classes.programStyles} icon={help} text='Help' handleClick={() => console.log('clicked help')}/>
+                <ListWrapper className={classes.programStyles} icon={help} text='Help' handleClick={() => handleWindow('Help')}/>
                 <Projects/>
             </div>
             <div className={classes.social}>

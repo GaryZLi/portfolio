@@ -44,7 +44,7 @@ const LoginScreen = ({updateScreen}) => {
     const handleDown = () => setStyles({
         height: 70,
         width: 70,
-        border: '1px white solid',
+        border: '5px white solid',
     });
 
     const handleUp = () => {

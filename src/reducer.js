@@ -2,23 +2,26 @@ import * as types from './action-types';
 
 export const initialState = {
     mobile: window.innerWidth < 900,
-    screen: 'desktopScreen',
+    screen: 'startupScreen',
     view: 'startupScreen',
     menu: false,
     projectsList: false,
-    input: '',
     scrollTop: 0,
-    taskbarWindows: [],
     cmdList: [],
+    taskbarWindows: [
+        'Help'
+    ],
     visibility: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': true,
+        'Internet Explorer': false,
+        'Help': true,
     },
     windows: {
         'main.cpp': false,
         'Command Prompt': false,
-        'Internet Explorer': true,
+        'Internet Explorer': false,
+        'Help': true,
     },
     currentTab: {
         name: 'About Me',

@@ -5,7 +5,8 @@ import {updateScreen} from '../../actions';
 import grassland from '../../picSrc/grassland.png';
 import MainCpp from '../MainCpp';
 import CmdPrompt from '../CmdPrompt';
-import IE from '../IE/index.js';
+import IE from '../IE';
+import Help from '../Help';
 import Taskbar from '../Taskbar';
 import Menu from '../Menu';
 import Cloud from '../Cloud';
@@ -52,6 +53,7 @@ const DesktopScreen = ({
                 {windows['main.cpp'] && <MainCpp/>}
                 {windows['Command Prompt'] && <CmdPrompt/>}
                 {windows['Internet Explorer'] && <IE/>}
+                {windows['Help'] && <Help/>}
                 <Menu/>
             </div>
             <Taskbar/>

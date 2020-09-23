@@ -275,6 +275,10 @@ export const tabs = [
         component: <Stoinks/>,
     },
     {
+        name: 'QuakeUp',
+        component: <QuakeUp/>,
+    },
+    {
         name: 'Dindle',
         component: <Dindle/>,
     },
@@ -309,10 +313,6 @@ export const tabs = [
     {
         name: 'Rob the Mafia',
         component: <RobTheMafia/>,
-    },
-    {
-        name: 'QuakeUp',
-        component: <QuakeUp/>,
     },
 ];
 
