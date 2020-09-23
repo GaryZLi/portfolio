@@ -8,6 +8,7 @@ const useStyles = makeStyles({
         width: '70%',
         display: 'flex',
         flexDirection: 'column',
+        margin: 'auto',
     },
     title: {
         display: 'inline-flex',

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
         position: 'absolute',
         backgroundColor: 'white',
         width: '100%',
-        boxShadow: '10px 10px 8px #000, 5px 10px 8px #000',
+        boxShadow: '10px 10px 8px #000, 5px 10px 8px #000, 1px 10px 8px #000',
         borderColor: '#000',
         borderLeftWidth: 1,
         borderTopLeftRadius: 10,

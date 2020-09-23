@@ -16,8 +16,6 @@ const useStyles = makeStyles({
         height: '100%',
         width: '100%',
         display: 'flex',
-        // display: '-webkit-flex',
-        // display: '-ms-flexbox',
         flexDirection: 'column',
         position: 'absolute',
         backgroundColor: 'rgb(14, 190, 224)',
@@ -26,13 +24,14 @@ const useStyles = makeStyles({
         height: `calc(100% - ${83}px)`,
         width: '100%',
         backgroundColor: 'white',
-        display: 'flex',
+        // display: 'flex',
         // display: '-webkit-flex',
         // display: '-ms-flexbox',
         // webkitFlexDirection: 'column', 
         // msFlexDirection: 'column',
-        flexDirection: 'column',
-        alignItems: 'center',
+        // flexDirection: 'column',
+        // alignItems: 'center',
+        // margin: 'auto',
         overflow: 'auto',
     },
 });
@@ -45,6 +44,8 @@ const IE = ({
     updateScrollTop,
 }) => {
     const classes = useStyles();
+
+    
 
     return (
         <div
@@ -59,7 +60,7 @@ const IE = ({
         >
             <WindowTop name='Internet Explorer' color='black' />
             <Toolbar/>
-            <div className={classes.content}>
+            <div className={classes.content} ref={e => e? e.scrollTop = 0 : null}>
                 {tabs[tabIndex]?.component}
             </div>
         </div>

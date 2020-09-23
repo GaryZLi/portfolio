@@ -13,18 +13,14 @@ const useStyles = makeStyles({
         }
     },
     left: {
-        // height: '75%',
         height: 30,
-        // width: '3.5%',
         width: 2,
         transform: 'rotate(45deg)',
         position: 'absolute',
         borderRadius: 100,
     },
     right: {
-        // height: '75%',
         height: 30,
-        // width: '3.5%',
         width: 2,
         transform: 'rotate(-45deg)',
         position: 'absolute',

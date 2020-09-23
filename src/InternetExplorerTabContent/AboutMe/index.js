@@ -17,6 +17,7 @@ const useStyles = makeStyles({
         width: '80%',
         display: 'flex',
         flexDirection: 'column',
+        margin: 'auto',
         paddingBottom: 100,
         fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif',
     },

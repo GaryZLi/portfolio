@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/styles';
-import TabIcon from '../../picSrc/tabIcon.png';
+import TabIcon from '../picSrc/tabIcon.png';
 import {
     updateTab,
-} from '../../actions';
+} from '../actions';
 
 const useStyles = makeStyles({
     root: {
@@ -17,7 +17,8 @@ const useStyles = makeStyles({
         borderRadius: 5,
         display: 'flex',
         alignItems: 'center',
-        fontSize: 10,
+        overflow: 'hidden',
+        fontSize: 12,
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: '#b8f3ff',
@@ -45,7 +46,10 @@ const Tab = ({
     };
 
     return (
-        <div className={classes.root} onClick={handleClick}>
+        <div
+            className={classes.root}
+            onClick={handleClick}
+        >
             <img className={classes.icon} src={TabIcon} alt='tab icon'/>
             {name}
         </div>
